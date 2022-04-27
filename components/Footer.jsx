@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="sticky z-20 flex items-center justify-center w-full h-screen px-10 bg-charleston">
       <div className="flex flex-row justify-around w-full">
-        <h2 className="font-Pacifico text-7xl text-ivory">Glorious</h2>
+        <h2 className="text-6xl font-Pacifico text-ivory">Glorious</h2>
         {/* col1 */}
         <ul className="flex flex-col gap-4">
           <li className="mb-2 -ml-4 text-xl font-Comfortaa text-ivory">

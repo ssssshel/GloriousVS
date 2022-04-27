@@ -18,6 +18,7 @@ module.exports = {
         'jogger': "url('/img/assets/jogger.jpg')",
         'polo': "url('/img/assets/polo.jpg')",
         'short': "url('/img/assets/short.jpg')",
+        'abrigoGris': "url('/img/assets/abrigoGris.jpeg')"
       },
       fontFamily: {
         'Comfortaa': ['Comfortaa', 'sans-serif'],
