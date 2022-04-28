@@ -7,7 +7,7 @@ import Footer from "../../../../components/Footer";
 export default function Product() {
   return (
     <div>
-      <HeadLayout />
+      <HeadLayout section={`Producto id`} description={`Producto id`} />
       <Navbar />
       <div className="w-full h-auto py-20 bg-ivory">
         {/* principal */}

@@ -9,6 +9,9 @@ const Navbar = () => {
         <a className="text-3xl font-Pacifico text-charleston">Glorious</a>
       </Link>
       <ul className="flex flex-row gap-12 font-Comfortaa">
+        <Link href="/">
+          <a className="hover:font-bold ">Inicio</a>
+        </Link>
         <Link href="/catalogo">
           <a className="hover:font-bold ">Productos</a>
         </Link>
@@ -22,6 +25,9 @@ const Navbar = () => {
 
       {/* AUTHENTICATED STATE */}
       {/* <ul className="flex flex-row gap-12 text-charleston font-Comfortaa">
+      <Link href="/">
+          <a className="hover:font-bold ">Inicio</a>
+        </Link>
         <Link href="#">
           <a className="hover:font-bold ">Productos</a>
         </Link>
