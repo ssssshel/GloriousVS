@@ -16,7 +16,7 @@ const PreviousPurchases = () => {
         </div>
 
         <div className="flex flex-col gap-5">
-          <div className="grid w-full h-40 grid-cols-8 grid-rows-1 gap-5 px-4 py-3 shadow-xl bg-cornsilk rounded-2xl">
+          <div className="grid w-full h-40 grid-cols-8 grid-rows-1 gap-5 px-4 py-3 shadow-xl bg-cornsilk rounded-2xl hover:bg-ivory">
             <div className="col-start-1 col-end-2 bg-center bg-cover rounded-lg bg-abrigo"></div>
             <div className="flex flex-col justify-center col-start-2 col-end-7 gap-2">
               <p className="text-sm font-Comfortaa text-charleston">Código de venta: fheu734</p>

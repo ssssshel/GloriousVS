@@ -8,6 +8,7 @@ const PersonalData = () => {
         <li>Apellido materno: </li>
         <li>Tipo de documento: </li>
         <li>Correo electrónico: </li>
+        <li>Celular: </li>
       </ul>
       <div className="px-6 py-2 shadow-xl cursor-pointer bg-green w-fit rounded-xl hover:bg-teal">
         <p>Guardar</p>

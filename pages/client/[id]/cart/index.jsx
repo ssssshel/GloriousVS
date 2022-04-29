@@ -2,10 +2,13 @@ import Footer from "../../../../components/Footer";
 import HeadLayout from "../../../../components/Head";
 import Navbar from "../../../../components/Navbar";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
 const UserBag = () => {
   return (
     <div>
-      <HeadLayout section={'Bolsa de compras'}/>
+      <HeadLayout section={'Bolsa de compras'} />
       <Navbar />
       <div className="flex flex-col w-full h-auto px-40 py-20 gap-11 bg-ivory">
         <div className="flex flex-col justify-center w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
@@ -14,13 +17,16 @@ const UserBag = () => {
 
         <div className="grid w-full h-auto grid-cols-10 grid-rows-1 gap-5">
           <div className="flex flex-col col-start-1 col-end-7 gap-5">
-            <div className="grid w-full grid-cols-6 grid-rows-1 px-4 py-3 shadow-xl h-36 bg-cornsilk rounded-2xl">
+            <div className="grid w-full grid-cols-6 grid-rows-1 gap-3 px-4 py-3 shadow-xl h-36 bg-cornsilk rounded-2xl">
               <div className="bg-center bg-cover rounded-lg bg-abrigo"></div>
-              <div className="col-start-2 col-end-6">
-                <p className="text-sm font-Comfortaa text-charleston">Código de venta: fheu734</p>
-                <p className=" font-Comfortaa text-charleston">Estado:</p>
-                <p className="text-sm font-Comfortaa text-charleston">Dirección de entrega: Calle Sebastián Barranca 3956, Los Olivos, Lima</p>
-                
+              <div className="flex flex-col justify-center col-start-2 col-end-6">
+                <p className="text-sm font-Comfortaa text-charleston">Abrigo camel</p>
+                <p className="text-sm font-Comfortaa text-charleston">Talla</p>
+                <p className="text-sm font-Comfortaa text-charleston">Color</p>
+              </div>
+              <div className="flex flex-col items-start justify-center">
+                <p className="mr-3 text-sm font-Comfortaa text-charleston">Cantidad: 5</p>
+                <FontAwesomeIcon icon={faTrashCan} />
               </div>
             </div>
           </div>
