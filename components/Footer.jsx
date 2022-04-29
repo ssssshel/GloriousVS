@@ -74,7 +74,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className="absolute bottom-0 flex flex-row items-center justify-end w-full h-20 px-10 bg-teal">
+      <div className="absolute bottom-0 flex flex-row items-center justify-end w-full h-16 px-10 bg-teal">
         <div className="flex flex-row gap-8 text-3xl">
           <FontAwesomeIcon className="hover:text-cornsilk" icon={faFacebook} />
           <FontAwesomeIcon className="hover:text-cornsilk" icon={faInstagram} />
