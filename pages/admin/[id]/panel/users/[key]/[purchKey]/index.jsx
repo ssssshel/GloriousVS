@@ -1,15 +1,17 @@
-import HeadLayout from "../../../../../components/Head"
-import Footer from "../../../../../components/Footer"
-import Navbar from "../../../../../components/Navbar"
+import HeadLayout from "../../../../../../../components/Head";
+import Navbar from "../../../../../../../components/Navbar";
 
-const PurchaseDetails = () => {
-    return (
+const SpecificOrder = () => {
+    return ( 
         <div>
             <HeadLayout section={"Detalles compra codigo"} />
             <Navbar />
             <div className="flex flex-col w-full h-auto px-40 py-20 gap-11 bg-ivory">
-                <div className="flex flex-col justify-center w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
-                    <p className="text-3xl font-Pacifico text-charleston">Detalles compra codigo</p>
+                <div className="flex items-center justify-between w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
+                    <p className="text-3xl font-Pacifico text-charleston">Detalles orden codigo</p>
+                    <div className="p-2 bg-red-800 rounded-lg cursor-pointer w-fit">
+                        <p className="text-ivory">Anular orden</p>
+                    </div>
                 </div>
                 <div className="grid w-full h-auto grid-cols-10 grid-rows-1 gap-6 ">
                     {/* PRODUCTS */}
@@ -62,9 +64,9 @@ const PurchaseDetails = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            
         </div>
-    );
+     );
 }
-
-export default PurchaseDetails;
+ 
+export default SpecificOrder;

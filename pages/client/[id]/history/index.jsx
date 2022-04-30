@@ -26,6 +26,7 @@ const PreviousPurchases = () => {
             </div>
             <div className="flex flex-col justify-center col-start-7 col-end-9 gap-2">
               <p className="text-sm font-Comfortaa text-charleston">Productos ()</p>
+              <p className="text-sm font-Comfortaa text-charleston">Monto total: S/.</p>
               {/* if pedido == en proceso */}
               <Link href={"/client/userId/history/purchCod"}>
                 <a className="cursor-pointer ">Ver detalles</a>

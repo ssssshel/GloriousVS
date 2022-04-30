@@ -12,7 +12,7 @@ export default function Product() {
       <div className="w-full h-auto py-20 bg-ivory">
         {/* principal */}
         <section className="grid items-center w-full h-80% grid-cols-10 grid-rows-1 px-40 ">
-          <div className="w-full h-full col-start-1 col-end-5 bg-center bg-no-repeat bg-cover rounded-3xl bg-abrigoGris" />
+          <div className="w-full h-full col-start-1 col-end-5 bg-center bg-no-repeat bg-cover shadow-xl rounded-3xl bg-abrigoGris" />
           <div className="flex flex-col h-full col-start-7 col-end-11 justify-evenly">
             {/* name */}
             <h1 className="text-5xl font-Pacifico text-charleston">
@@ -64,7 +64,7 @@ export default function Product() {
                 Stock: 10 unidades
               </p>
               {/* selectOptions */}
-              <div className="flex flex-col items-center justify-center h-16 cursor-pointer hover:bg-teal rounded-2xl bg-charleston w-80">
+              <div className="flex flex-col items-center justify-center h-16 shadow-xl cursor-pointer hover:bg-teal rounded-2xl bg-charleston w-80">
                 <p className="text-lg font-Comfortaa text-ivory">
                   Elige tus opciones
                 </p>
@@ -80,7 +80,7 @@ export default function Product() {
           <div className="grid w-full h-full grid-cols-4 grid-rows-1 gap-20">
             <Link href={`/catalogo/`}>
               <a>
-                <div className="flex flex-col justify-end w-full h-full bg-no-repeat bg-cover hover:brightness-75 bg-abrigo rounded-2xl">
+                <div className="flex flex-col justify-end w-full h-full bg-no-repeat bg-cover shadow-xl hover:brightness-75 bg-abrigo rounded-2xl">
                   <div className="grid w-full grid-cols-3 grid-rows-1 rounded-b-3xl h-14 hover:cursor-pointer">
                     <div className="flex flex-col justify-center col-start-1 col-end-3 pl-4 text-sm font-Comfortaa rounded-bl-2xl hover:bg-ivory bg-green">
                       <h3>Abrigo camel</h3>

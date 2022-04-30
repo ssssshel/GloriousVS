@@ -5,6 +5,7 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   return (
     <header className="fixed top-0 z-10 flex flex-row items-center justify-between w-full h-20 px-10 backdrop-blur-lg navbar bg-ivory/80 ">
+      {/* NAVBAR VISITOR */}
       <Link href="/">
         <a className="text-3xl font-Pacifico text-charleston">Glorious</a>
       </Link>
@@ -21,7 +22,7 @@ const Navbar = () => {
         <Link href="#">
           <a className="hover:font-bold ">Registro</a>
         </Link>
-      </ul>
+      </ul> 
 
       {/* AUTHENTICATED STATE */}
       {/* <ul className="flex flex-row gap-12 text-charleston font-Comfortaa">
@@ -39,6 +40,20 @@ const Navbar = () => {
             <FontAwesomeIcon className="text-charleston className="hover:font-bold "" icon={faBagShopping} />
           </a>
         </Link>
+      </ul> */}
+
+      {/* AUTHENTICATED ADMIN */}
+      {/* <Link href="/">
+        <a className="text-3xl font-Pacifico text-charleston">GloriousAdmin</a>
+      </Link>
+      <ul className="flex flex-row gap-12 font-Comfortaa">
+        <Link href="/">
+          <a className="hover:font-bold ">Inicio</a>
+        </Link>
+        <Link href="/">
+          <a className="hover:font-bold ">Cerrar sesión</a>
+        </Link>
+
       </ul> */}
     </header>
   );

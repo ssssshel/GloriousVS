@@ -26,12 +26,12 @@ export default function ProductCategory() {
             <h1 className="text-6xl text-charleston font-Pacifico">
               {category}
             </h1>
-            <div className="w-full h-full col-span-11 col-start-5 bg-center bg-no-repeat bg-cover rounded-3xl bg-abrigoGris" />
+            <div className="w-full h-full col-span-11 col-start-5 bg-center bg-no-repeat bg-cover shadow-xl rounded-3xl bg-abrigoGris" />
           </div>
           <div className="grid grid-flow-row grid-cols-3 mt-20 bg-ivory gap-y-20 gap-x-28">
             <Link href={`/catalogo/${category}/`}>
               <a>
-                <div className="w-full h-60% hover:brightness-75 flex flex-col justify-end bg-abrigo bg-cover rounded-3xl bg-no-repeat">
+                <div className="shadow-xl w-full h-60% hover:brightness-75 flex flex-col justify-end bg-abrigo bg-cover rounded-3xl bg-no-repeat">
                   <div className="grid w-full grid-cols-3 grid-rows-1 rounded-b-3xl h-14 hover:cursor-pointer">
                     <div className="flex flex-col justify-center col-start-1 col-end-3 pl-6 text-base font-Comfortaa rounded-bl-3xl hover:bg-ivory bg-green">
                       <h3>Abrigo camel</h3>

@@ -19,14 +19,14 @@ const home = () => {
       {/* section */}
       <div className="grid items-center w-full h-screen grid-cols-2 grid-rows-1 gap-20 px-10 bg-green">
         <div className="h-60%">
-          <div className="flex flex-col items-center justify-end w-full h-full bg-no-repeat bg-cover rounded-3xl bg-horizontalIndex">
+          <div className="flex flex-col items-center justify-end w-full h-full bg-no-repeat bg-cover shadow-xl rounded-3xl bg-horizontalIndex">
             <div className="flex flex-col items-center justify-center w-full rounded-b-3xl hover:cursor-pointer hover:bg-teal h-14 bg-charleston text-ivory ">
               <span className="text-base font-Comfortaa">Conoce mas</span>
             </div>
           </div>
         </div>
         <article className="flex flex-col gap-6 pl-14">
-          <h1 className="text-6xl font-Pacifico">Nueva Colección</h1>
+          <h1 className="text-6xl font-Pacifico ">Nueva Colección</h1>
           <h2 className="text-base font-bold font-Comfortaa">
             Otoño - Invierno
           </h2>
@@ -43,7 +43,7 @@ const home = () => {
         <div className="grid grid-flow-row grid-cols-3 mt-20 gap-y-20 gap-x-28">
           <Link href={"/catalogo/abrigos"}>
             <a>
-              <div className="w-full h-60% bg-center hover:brightness-75 flex flex-col justify-end bg-abrigo bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full h-60% shadow-xl bg-center hover:brightness-75 flex flex-col justify-end bg-abrigo bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Abrigos
@@ -54,7 +54,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/casacas"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-casaca bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-casaca bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Casacas
@@ -65,7 +65,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/chompas"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-chompa bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-chompa bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Chompas
@@ -76,7 +76,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/joggers"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-jogger bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-jogger bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Joggers
@@ -87,7 +87,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/jeans"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-jeans bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-jeans bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Jeans
@@ -98,7 +98,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/faldas"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-falda bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-falda bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Faldas
@@ -109,7 +109,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/blusas"}>
             <a>
-              <div className="w-full bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-blusa bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl bg-center h-60% hover:brightness-75 flex flex-col justify-end bg-blusa bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Blusas
@@ -120,7 +120,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/polos"}>
             <a>
-              <div className="w-full h-60% bg-center hover:brightness-75 flex flex-col justify-end bg-polo bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl h-60% bg-center hover:brightness-75 flex flex-col justify-end bg-polo bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Polos
@@ -131,7 +131,7 @@ const home = () => {
           </Link>
           <Link href={"/catalogo/shorts"}>
             <a>
-              <div className="w-full h-60% bg-center hover:brightness-75 flex flex-col justify-end bg-short bg-cover rounded-3xl bg-no-repeat">
+              <div className="w-full shadow-xl h-60% bg-center hover:brightness-75 flex flex-col justify-end bg-short bg-cover rounded-3xl bg-no-repeat">
                 <div className="flex flex-col items-center justify-center w-full hover:bg-ivory h-14 rounded-b-3xl hover:cursor-pointer bg-green">
                   <span className="font-bold text-charleston font-Comfortaa">
                     Shorts
