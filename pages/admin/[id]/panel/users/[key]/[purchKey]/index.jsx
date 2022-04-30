@@ -4,12 +4,12 @@ import Navbar from "../../../../../../../components/Navbar";
 const SpecificOrder = () => {
     return ( 
         <div>
-            <HeadLayout section={"Detalles compra codigo"} />
+            <HeadLayout section={"Detalles venta codigo"} />
             <Navbar />
             <div className="flex flex-col w-full h-auto px-40 py-20 gap-11 bg-ivory">
                 <div className="flex items-center justify-between w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
                     <p className="text-3xl font-Pacifico text-charleston">Detalles orden codigo</p>
-                    <div className="p-2 bg-red-800 rounded-lg cursor-pointer w-fit">
+                    <div className="p-2 bg-red-800 rounded-lg cursor-pointer hover:bg-red-600 w-fit">
                         <p className="text-ivory">Anular orden</p>
                     </div>
                 </div>
