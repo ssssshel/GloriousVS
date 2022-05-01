@@ -20,6 +20,16 @@ const ProductsPanel = () => {
           {/* OPCIONES INVENTARIO */}
           <div className="flex flex-col justify-center col-start-1 col-end-7 gap-5 px-6 py-4 shadow-xl bg-cornsilk rounded-xl">
             <p className="text-xl font-Pacifico text-charleston">Inventario</p>
+            <div className="p-3 rounded-lg cursor-pointer hover:bg-green bg-charleston">
+              <p
+                onClick={() =>
+                  router.push("/admin/ADMINID/panel/products/new")
+                }
+                className="text-ivory "
+              >
+               Agregar nuevo producto
+              </p>
+            </div>
             <div className="p-3 rounded-lg cursor-pointer hover:bg-green bg-teal">
               <p
                 onClick={() =>
@@ -111,7 +121,6 @@ const ProductsPanel = () => {
               </p>
             </div>
           </div>
-          <div>Agregar nuevo</div>
         </div>
       </div>
     </div>
