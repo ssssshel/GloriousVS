@@ -25,7 +25,6 @@ const ProductCategoryAdmin = () => {
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

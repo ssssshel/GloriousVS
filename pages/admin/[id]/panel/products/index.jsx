@@ -10,15 +10,15 @@ const ProductsPanel = () => {
     <div>
       <HeadLayout section={"Panel de productos"} />
       <Navbar />
-      <div className="flex flex-col w-full min-h-screen gap-6 px-10 py-20 bg-ivory">
+      <div className="flex flex-col w-full min-h-screen gap-6 px-40 py-20 bg-ivory">
         <div className="flex flex-col justify-center w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
           <p className="text-3xl font-Pacifico text-charleston">
             Panel de productos
           </p>
         </div>
-        <div className="grid grid-cols-10 grid-rows-1 gap-4">
+        <div className="gap-4">
           {/* OPCIONES INVENTARIO */}
-          <div className="flex flex-col justify-center col-start-1 col-end-7 gap-5 px-6 py-4 shadow-xl bg-cornsilk rounded-xl">
+          <div className="flex flex-col justify-center gap-5 px-6 py-4 shadow-xl bg-cornsilk rounded-xl">
             <p className="text-xl font-Pacifico text-charleston">Inventario</p>
             <div className="p-3 rounded-lg cursor-pointer hover:bg-green bg-charleston">
               <p
