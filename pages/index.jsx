@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Footer from "../components/Footer";
-
 import HeadLayout from "../components/Head";
 import Navbar from "../components/Navbar";
+// import newUser from "../lib/newUser";
 
 const home = () => {
   return (
@@ -149,3 +149,12 @@ const home = () => {
 };
 
 export default home;
+
+// export async function getServerSideProps(){
+//   await newUser()
+//   return {
+//     props:{
+
+//     }
+//   }
+// }

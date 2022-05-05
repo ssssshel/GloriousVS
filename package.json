@@ -21,6 +21,7 @@
     "dependencies": "^0.0.1",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.1",
+    "nanoid": "^3.3.4",
     "next": "12.1.5",
     "next-auth": "^4.3.3",
     "postcss": "^8.4.12",
