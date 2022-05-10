@@ -15,30 +15,30 @@ const NewProduct = () => {
     material: "",
     season: "",
     color: "",
-    sizes: [
+    sizes:[
       {
-        size: "",
+        size: "S",
         stock: 0,
-        prize: "",
+        prize: 0
       },
       {
-        size: "",
+        size: "M",
         stock: 0,
-        prize: "",
+        prize: 0
       },
       {
-        size: "",
+        size: "L",
         stock: 0,
-        prize: "",
+        prize: 0
       },
       {
-        size: "",
+        size: "XL",
         stock: 0,
-        prize: "",
-      },
-    ],
-  };
+        prize: 0
+      }
+    ]
 
+  };
   // const formSize = {
   // 	size: "",
   // 	stock: 0,

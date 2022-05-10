@@ -1,6 +1,10 @@
 import { useState } from "react";
+import AlertAdmin from "../alerts/AlertAdmin";
 
 const FormProduct = ({ formData }) => {
+
+  let modalState = 0
+
   const [form, setForm] = useState({
     productCode: formData.productCode,
     category: formData.category,
@@ -8,49 +12,30 @@ const FormProduct = ({ formData }) => {
     material: formData.material,
     season: formData.season,
     color: formData.color,
-    // size1: {
-    //   size: formData.size1.size,
-    //   stock: formData.size1.stock,
-    //   prize: formData.size1.prize,
-    // },
-    // size2: {
-    //   size: formData.size2.size,
-    //   stock: formData.size2.stock,
-    //   prize: formData.size2.prize,
-    // },
-    // size3: {
-    //   size: formData.size3.size,
-    //   stock: formData.size3.stock,
-    //   prize: formData.size3.prize,
-    // },
-    // size4: {
-    //   size: formData.size4.size,
-    //   stock: formData.size4.stock,
-    //   prize: formData.size4.prize,
-    // },
     sizes: [
       {
-        size: formData.size1.size,
-        stock: formData.size1.stock,
-        prize: formData.size1.prize,
+        size: formData.sizes[0].size,
+        stock: formData.sizes[0].stock,
+        prize: formData.sizes[0].prize,
       },
       {
-        size: formData.size2.size,
-        stock: formData.size2.stock,
-        prize: formData.size2.prize,
+        size: formData.sizes[1].size,
+        stock: formData.sizes[1].stock,
+        prize: formData.sizes[1].prize,
       },
       {
-        size: formData.size3.size,
-        stock: formData.size3.stock,
-        prize: formData.size3.prize,
+        size: formData.sizes[2].size,
+        stock: formData.sizes[2].stock,
+        prize: formData.sizes[2].prize,
       },
       {
-        size: formData.size4.size,
-        stock: formData.size4.stock,
-        prize: formData.size4.prize,
+        size: formData.sizes[3].size,
+        stock: formData.sizes[3].stock,
+        prize: formData.sizes[3].prize,
       },
-    ],
+    ]
   });
+
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -59,6 +44,17 @@ const FormProduct = ({ formData }) => {
       [name]: value,
     });
   };
+
+  const handleResize = (event, index) => {
+    const { sizes } = form
+    const { value, name } = event.target
+
+    sizes[index][name] = value
+    setForm({
+      ...form,
+      sizes
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,6 +76,7 @@ const FormProduct = ({ formData }) => {
 
       if (data.success) {
         console.log("Producto agregado con éxito");
+        modalState = 1
       }
     } catch (error) {
       console.log(error);
@@ -94,13 +91,14 @@ const FormProduct = ({ formData }) => {
           <input
             type="text"
             name="productCode"
+            required
             value={form.productCode}
             onChange={handleChange}
           />
         </p>
         <p>
           Categoría:
-          <select name="category" value={form.category} onChange={handleChange}>
+          <select required name="category" value={form.category} onChange={handleChange}>
             <option value={null}>Elige una categoría</option>
             <option value="abrigos">Abrigos</option>
             <option value="casacas">Casacas</option>
@@ -118,6 +116,7 @@ const FormProduct = ({ formData }) => {
           <input
             type="text"
             name="name"
+            required
             value={form.name}
             onChange={handleChange}
           />
@@ -126,6 +125,7 @@ const FormProduct = ({ formData }) => {
           Material:{" "}
           <input
             type="text"
+            required
             name="material"
             value={form.material}
             onChange={handleChange}
@@ -136,6 +136,7 @@ const FormProduct = ({ formData }) => {
           <input
             type="text"
             name="season"
+            required
             value={form.season}
             onChange={handleChange}
           />
@@ -145,130 +146,51 @@ const FormProduct = ({ formData }) => {
           <input
             type="text"
             name="color"
+            required
             value={form.color}
             onChange={handleChange}
           />
         </p>
-        <div>
-          <p>Talla S</p>
-          <p>
-            Talla:{" "}
-            <input
-              type="text"
-              name="size"
-              value={form.size1.size}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Stock:{" "}
-            <input
-              type="number"
-              name="stock"
-              value={form.size1.stock}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Precio:{" "}
-            <input
-              type="text"
-              name="prize"
-              value={form.size1.prize}
-              onChange={handleChange}
-            />
-          </p>
-        </div>
-        <div>
-          <p>Talla M</p>
-          <p>
-            Talla:{" "}
-            <input
-              type="text"
-              name="size"
-              value={form.size2.size}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Stock:{" "}
-            <input
-              type="number"
-              name="stock"
-              value={form.size2.stock}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Precio:{" "}
-            <input
-              type="text"
-              name="prize"
-              value={form.size2.prize}
-              onChange={handleChange}
-            />
-          </p>
-        </div>
-        <div>
-          <p>Talla L</p>
-          <p>
-            Talla:{" "}
-            <input
-              type="text"
-              name="size"
-              value={form.size3.size}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Stock:{" "}
-            <input
-              type="number"
-              name="stock"
-              value={form.size3.stock}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Precio:{" "}
-            <input
-              type="text"
-              name="prize"
-              value={form.size3.prize}
-              onChange={handleChange}
-            />
-          </p>
-        </div>
-        <div>
-          <p>Talla XL</p>
-          <p>
-            Talla:{" "}
-            <input
-              type="text"
-              name="size"
-              value={form.size4.size}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Stock:{" "}
-            <input
-              type="number"
-              name="stock"
-              value={form.size4.stock}
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            Precio:{" "}
-            <input
-              type="text"
-              name="prize"
-              value={form.size4.prize}
-              onChange={handleChange}
-            />
-          </p>
-        </div>
+        {
+          form.sizes.map((size, index) => {
+            return (
+              <div key={index}>
+                <p>Talla {index === 0 ? 'S' : index === 1 ? 'M' : index === 2 ? 'L' : index === 3 ? 'XL' : ''}</p>
+                <p>
+                  Talla:{" "}
+                  <input
+                    type="text"
+                    name="size"
+                    required
+                    value={size.size}
+                    onChange={(event) => handleResize(event, index)}
+                  />
+                </p>
+                <p>
+                  Stock:{" "}
+                  <input
+                    type="number"
+                    name="stock"
+                    required
+                    value={size.stock}
+                    onChange={(event) => handleResize(event, index)}
+                  />
+                </p>
+                <p>
+                  Precio:{" "}
+                  <input
+                    type="number"
+                    name="prize"
+                    required
+                    value={size.prize}
+                    onChange={(event) => handleResize(event, index)}
+                  />
+                </p>
+              </div>
+            )
+          })
+        }
+
         <button type="submit">Agregar</button>
       </form>
     </div>

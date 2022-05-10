@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import Sizes from "./Sizes"
 
 const ProductSchema = new mongoose.Schema({
 	productCode: {
@@ -26,53 +25,20 @@ const ProductSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	sizes: {
-		ref: Sizes
-	}
-	// size1:{
-	// 	size: {
-	// 		type: String
-	// 	},
-	// 	stock: {
-	// 		type: Number
-	// 	},
-	// 	prize: {
-	// 		type: String
-	// 	},
-	// },
-	// size2:{
-	// 	size: {
-	// 		type: String
-	// 	},
-	// 	stock: {
-	// 		type: Number
-	// 	},
-	// 	prize: {
-	// 		type: String
-	// 	},
-	// },
-	// size3:{
-	// 	size: {
-	// 		type: String
-	// 	},
-	// 	stock: {
-	// 		type: Number
-	// 	},
-	// 	prize: {
-	// 		type: String
-	// 	},
-	// },
-	// size4:{
-	// 	size: {
-	// 		type: String
-	// 	},
-	// 	stock: {
-	// 		type: Number
-	// 	},
-	// 	prize: {
-	// 		type: String
-	// 	},
+	sizes:[
+		{
+			size: {
+				type: String
+			},
+			stock:{
+				type: Number
+			},
+			prize:{
+				type: Number
+			}
+		}
 
+	]
 })
 
 
