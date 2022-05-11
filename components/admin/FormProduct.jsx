@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import AlertAdmin from "../alerts/AlertAdmin";
 
-const FormProduct = ({ formData }) => {
-
-  let modalState = 0
+const FormProduct = ({ formData, formNewProduct = true }) => {
+  let modalState = 0;
+  const router = useRouter();
 
   const [form, setForm] = useState({
     productCode: formData.productCode,
@@ -33,9 +34,8 @@ const FormProduct = ({ formData }) => {
         stock: formData.sizes[3].stock,
         prize: formData.sizes[3].prize,
       },
-    ]
+    ],
   });
-
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -46,24 +46,28 @@ const FormProduct = ({ formData }) => {
   };
 
   const handleResize = (event, index) => {
-    const { sizes } = form
-    const { value, name } = event.target
+    const { sizes } = form;
+    const { value, name } = event.target;
 
-    sizes[index][name] = value
+    sizes[index][name] = value;
     setForm({
       ...form,
-      sizes
-    })
-  }
+      sizes,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formNewProduct) {
+      putData(form);
+    }
     postData(form);
   };
 
+  // POSTDATA cliente => API
   const postData = async (form) => {
     try {
-      const res = await fetch("/api/admin/data/products", {
+      const req = await fetch("/api/admin/products", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -71,12 +75,35 @@ const FormProduct = ({ formData }) => {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      const data = await req.json();
       console.log(data);
 
       if (data.success) {
         console.log("Producto agregado con éxito");
-        modalState = 1
+        alert("Producto agregado con éxito");
+        self.location.reload();
+        modalState = 1;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // PUTDATA cliente => API
+  const putData = async (form) => {
+    const { productCode } = router.query;
+    try {
+      const req = await fetch(`/api/admin/products/${productCode}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      const data = await req.json();
+      if (data.success) {
+        window.alert(`Producto: ${productCode} agregado con éxito`);
+        location.replace("/admin/ADMINID/panel/products");
       }
     } catch (error) {
       console.log(error);
@@ -98,7 +125,12 @@ const FormProduct = ({ formData }) => {
         </p>
         <p>
           Categoría:
-          <select required name="category" value={form.category} onChange={handleChange}>
+          <select
+            required
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+          >
             <option value={null}>Elige una categoría</option>
             <option value="abrigos">Abrigos</option>
             <option value="casacas">Casacas</option>
@@ -151,47 +183,61 @@ const FormProduct = ({ formData }) => {
             onChange={handleChange}
           />
         </p>
-        {
-          form.sizes.map((size, index) => {
-            return (
-              <div key={index}>
-                <p>Talla {index === 0 ? 'S' : index === 1 ? 'M' : index === 2 ? 'L' : index === 3 ? 'XL' : ''}</p>
-                <p>
-                  Talla:{" "}
-                  <input
-                    type="text"
-                    name="size"
-                    required
-                    value={size.size}
-                    onChange={(event) => handleResize(event, index)}
-                  />
-                </p>
-                <p>
-                  Stock:{" "}
-                  <input
-                    type="number"
-                    name="stock"
-                    required
-                    value={size.stock}
-                    onChange={(event) => handleResize(event, index)}
-                  />
-                </p>
-                <p>
-                  Precio:{" "}
-                  <input
-                    type="number"
-                    name="prize"
-                    required
-                    value={size.prize}
-                    onChange={(event) => handleResize(event, index)}
-                  />
-                </p>
-              </div>
-            )
-          })
-        }
+        {form.sizes.map((size, index) => {
+          return (
+            <div key={index}>
+              <p>
+                Talla{" "}
+                {index === 0
+                  ? "S"
+                  : index === 1
+                  ? "M"
+                  : index === 2
+                  ? "L"
+                  : index === 3
+                  ? "XL"
+                  : ""}
+              </p>
+              <p>
+                Talla:{" "}
+                <input
+                  type="text"
+                  name="size"
+                  required
+                  value={size.size}
+                  onChange={(event) => handleResize(event, index)}
+                />
+              </p>
+              <p>
+                Stock:{" "}
+                <input
+                  type="number"
+                  name="stock"
+                  required
+                  value={size.stock}
+                  onChange={(event) => handleResize(event, index)}
+                />
+              </p>
+              <p>
+                Precio:{" "}
+                <input
+                  type="number"
+                  name="prize"
+                  required
+                  value={size.prize}
+                  onChange={(event) => handleResize(event, index)}
+                />
+              </p>
+            </div>
+          );
+        })}
 
-        <button type="submit">Agregar</button>
+        <button
+          className="bg-red-600 rounded-lg p-2 w-fit hover:bg-red-300"
+          type="submit"
+        >
+          {formNewProduct ? "Agregar" : "Editar"}
+        </button>
       </form>
     </div>
   );
