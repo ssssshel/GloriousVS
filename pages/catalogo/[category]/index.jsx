@@ -14,7 +14,9 @@ export default function ProductCategory({ success, error, items }) {
 
   let cat = "";
 
-  cat = category.substring(0, 1).toUpperCase() + category.substring(1);
+  if(category){
+    cat = category.substring(0, 1).toUpperCase() + category.substring(1);
+  }
 
 
   if (!success) {
