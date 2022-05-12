@@ -60,8 +60,9 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
     e.preventDefault();
     if (!formNewProduct) {
       putData(form);
+    }else{
+      postData(form);
     }
-    postData(form);
   };
 
   // POSTDATA cliente => API
@@ -75,8 +76,8 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
         body: JSON.stringify(form),
       });
 
-      const data = await req.json();
-      console.log(data);
+      const post = await req.json();
+      console.log(post);
 
       if (data.success) {
         console.log("Producto agregado con éxito");
@@ -102,7 +103,7 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
       });
       const data = await req.json();
       if (data.success) {
-        window.alert(`Producto: ${productCode} agregado con éxito`);
+        window.alert(`Producto: ${productCode} editado con éxito`);
         location.replace("/admin/ADMINID/panel/products");
       }
     } catch (error) {
@@ -233,7 +234,7 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
         })}
 
         <button
-          className="bg-red-600 rounded-lg p-2 w-fit hover:bg-red-300"
+          className="p-2 bg-red-600 rounded-lg w-fit hover:bg-red-300"
           type="submit"
         >
           {formNewProduct ? "Agregar" : "Editar"}

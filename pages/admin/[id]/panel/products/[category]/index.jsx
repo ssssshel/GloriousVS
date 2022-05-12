@@ -8,9 +8,9 @@ import Link from "next/link";
 
 export default function ProductCategoryAdmin({ success, error, items }) {
 
-	console.log(success)
-	console.log(error)
-	console.log(items)
+	// console.log(success)
+	// console.log(error)
+	// console.log(items)
 
 	const router = useRouter()
 	const { category } = router.query;

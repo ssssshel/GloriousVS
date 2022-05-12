@@ -59,7 +59,7 @@ export default function SpecificProductAdmin({ success, error, item }) {
               <div className="flex flex-col items-start justify-center">
                 <p
                   onClick={() => deleteProduct(item.productCode)}
-                  className="mr-3 text-sm cursor-pointer font-Comfortaa p-2 rounded-lg hover:bg-red-400 bg-red-700 text-ivory"
+                  className="p-2 mr-3 text-sm bg-red-700 rounded-lg cursor-pointer font-Comfortaa hover:bg-red-400 text-ivory"
                 >
                   Eliminar producto
                 </p>
@@ -69,7 +69,7 @@ export default function SpecificProductAdmin({ success, error, item }) {
                       `/admin/ADMINID/panel/products/chompas/${item.productCode}/edit`
                     )
                   }
-                  className="mr-3 mt-7 text-sm cursor-pointer font-Comfortaa hover:font-bold text-charleston"
+                  className="mr-3 text-sm cursor-pointer mt-7 font-Comfortaa hover:font-bold text-charleston"
                 >
                   Editar producto
                 </p>
