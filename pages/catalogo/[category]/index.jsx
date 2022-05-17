@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { connectDb } from "../../../lib/connectDb";
 import Product from "../../../models/Product";
@@ -43,7 +44,11 @@ export default function ProductCategory({ success, error, items }) {
               items.map(({_id, name, sizes, productCode, img }) => (
                 <Link key={_id} href={`/catalogo/${category}/${productCode}`}>
                   <a>
-                    <div className={`shadow-xl w-full h-60% hover:brightness-75 flex flex-col justify-end bg-[url("https://${img}")] bg-cover bg-center rounded-3xl bg-no-repeat`}>
+                    <div className={`shadow-xl w-full h-60% hover:brightness-75 flex flex-col justify-end  rounded-3xl bg-no-repeat relative`}>
+                      <div className="relative w-full h-full">
+                      <Image alt="" className="rounded-t-3xl" src={img} layout='fill' objectFit="cover" objectPosition="center" />
+
+                      </div>
                       <div className="grid w-full grid-cols-3 grid-rows-1 rounded-b-3xl h-14 hover:cursor-pointer">
                         <div className="flex flex-col justify-center col-start-1 col-end-3 pl-6 text-base font-Comfortaa rounded-bl-3xl hover:bg-ivory bg-green">
                           <h3>{name}</h3>

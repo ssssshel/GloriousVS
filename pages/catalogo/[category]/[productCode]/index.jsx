@@ -4,6 +4,7 @@ import { useState } from "react"
 import { connectDb } from "../../../../lib/connectDb";
 import Product from "../../../../models/Product";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import HeadLayout from "../../../../components/Head";
 import Navbar from "../../../../components/Navbar";
@@ -34,7 +35,9 @@ export default function IndividualProduct({ success, error, item }) {
       <div className="w-full h-auto py-20 bg-ivory">
         {/* principal */}
         <section className="grid items-center w-full h-80% grid-cols-10 grid-rows-1 px-40 ">
-          <div className="w-full h-full col-start-1 col-end-5 bg-center bg-no-repeat bg-cover shadow-xl rounded-3xl bg-abrigoGris" />
+          <div className="relative w-full h-full col-start-1 col-end-5 shadow-xl" >
+            <Image alt="" src={item.img} className="rounded-3xl" layout="fill" objectFit="cover" objectPosition="center"/>
+          </div>
           <div className="flex flex-col h-full col-start-7 col-end-11 justify-evenly">
             {/* name */}
             <h1 className="text-5xl font-Pacifico text-charleston">
@@ -102,7 +105,7 @@ export default function IndividualProduct({ success, error, item }) {
           </div>
         </section>
         {/* other products */}
-        <section className="flex flex-col w-full h-screen gap-16 py-20 pt-40 pl-40 pr-10">
+        {/* <section className="flex flex-col w-full h-screen gap-16 py-20 pt-40 pl-40 pr-10">
           <h2 className="text-5xl font-Pacifico text-charleston">
             Productos similares
           </h2>
@@ -123,7 +126,7 @@ export default function IndividualProduct({ success, error, item }) {
               </a>
             </Link>
           </div>
-        </section>
+        </section> */}
       </div>
       <Footer />
     </div>

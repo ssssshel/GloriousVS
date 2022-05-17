@@ -10,7 +10,7 @@ const Navbar = ({hasPrivileges, clientID}) => {
   {/* AUTHENTICATED STATE */ }
   if (!hasPrivileges && status === "authenticated") {
     return (
-      <header className="fixed top-0 z-10 flex flex-row items-center justify-between w-full h-20 px-10 backdrop-blur-lg navbar bg-ivory/80 ">
+      <header className="fixed top-0 z-50 flex flex-row items-center justify-between w-full h-20 px-10 backdrop-blur-lg navbar bg-ivory/80 ">
         <Link href="/">
           <a className="text-3xl font-Pacifico text-charleston">Glorious</a>
         </Link>
