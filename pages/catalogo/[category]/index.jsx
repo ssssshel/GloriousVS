@@ -40,14 +40,15 @@ export default function ProductCategory({ success, error, items }) {
           </div>
           <div className="grid grid-flow-row grid-cols-3 mt-20 bg-ivory gap-y-20 gap-x-28">
             {
-              items.map(({_id, name, sizes, productCode }) => (
+              items.map(({_id, name, sizes, productCode, img }) => (
                 <Link key={_id} href={`/catalogo/${category}/${productCode}`}>
                   <a>
-                    <div className="shadow-xl w-full h-60% hover:brightness-75 flex flex-col justify-end bg-abrigo bg-cover rounded-3xl bg-no-repeat">
+                    <div className={`shadow-xl w-full h-60% hover:brightness-75 flex flex-col justify-end bg-[url("https://${img}")] bg-cover bg-center rounded-3xl bg-no-repeat`}>
                       <div className="grid w-full grid-cols-3 grid-rows-1 rounded-b-3xl h-14 hover:cursor-pointer">
                         <div className="flex flex-col justify-center col-start-1 col-end-3 pl-6 text-base font-Comfortaa rounded-bl-3xl hover:bg-ivory bg-green">
                           <h3>{name}</h3>
                           <p>S/.{sizes[0].prize}</p>
+                          {/* <p>{img}</p> */}
                         </div>
                         <div className="flex flex-col justify-center text-sm bg-charleston hover:bg-ivory hover:text-charleston font-Comfortaa text-ivory rounded-br-3xl">
                           <p className="text-center">Elige tus opciones</p>

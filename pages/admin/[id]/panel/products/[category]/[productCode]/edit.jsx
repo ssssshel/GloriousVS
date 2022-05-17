@@ -43,6 +43,7 @@ export default function EditProduct() {
     material: product.material,
     season: product.season,
     color: product.color,
+    img: product.img,
     sizes: [
       {
         size: product.sizes[0].size,

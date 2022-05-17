@@ -13,6 +13,7 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
     material: formData.material,
     season: formData.season,
     color: formData.color,
+    img: formData.img,
     sizes: [
       {
         size: formData.sizes[0].size,
@@ -79,11 +80,9 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
       const post = await req.json();
       console.log(post);
 
-      if (data.success) {
-        console.log("Producto agregado con éxito");
-        alert("Producto agregado con éxito");
+      if (post.success) {
+        window.alert("Producto agregado con éxito");
         self.location.reload();
-        modalState = 1;
       }
     } catch (error) {
       console.log(error);
@@ -181,6 +180,16 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
             name="color"
             required
             value={form.color}
+            onChange={handleChange}
+          />
+        </p>
+        <p>
+          Imagen:{" "}
+          <input
+            type="text"
+            name="img"
+            required
+            value={form.img}
             onChange={handleChange}
           />
         </p>

@@ -15,6 +15,7 @@ const NewProduct = () => {
     material: "",
     season: "",
     color: "",
+    img: "",
     sizes: [
       {
         size: "S",
