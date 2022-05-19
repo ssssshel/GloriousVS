@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { useState } from "react"
+import { useState } from "react";
 import { connectDb } from "../../../../lib/connectDb";
 import Product from "../../../../models/Product";
 import { useRouter } from "next/router";
@@ -12,7 +12,6 @@ import Footer from "../../../../components/Footer";
 import LoadingScreen from "../../../../components/alerts/Loading";
 
 export default function IndividualProduct({ success, error, item }) {
-
   const router = useRouter();
   const { category } = router.query;
 
@@ -20,12 +19,14 @@ export default function IndividualProduct({ success, error, item }) {
   cat = category.substring(0, 1).toUpperCase() + category.substring(1);
 
   // HOOK DE ESTADO DE TALLA SELECCIONADA
-  let [selectedSize, setSelectedSize] = useState({ size: item.sizes[0].size, stock: item.sizes[0].stock, prize: item.sizes[0].prize })
+  let [selectedSize, setSelectedSize] = useState({
+    size: item.sizes[0].size,
+    stock: item.sizes[0].stock,
+    prize: item.sizes[0].prize,
+  });
 
   if (!success) {
-    return (
-      <LoadingScreen />
-    )
+    return <LoadingScreen />;
   }
 
   return (
@@ -35,15 +36,25 @@ export default function IndividualProduct({ success, error, item }) {
       <div className="w-full h-auto py-20 bg-ivory">
         {/* principal */}
         <section className="grid items-center w-full h-80% grid-cols-10 grid-rows-1 px-40 ">
-          <div className="relative w-full h-full col-start-1 col-end-5 shadow-xl" >
-            <Image alt="" src={item.img} className="rounded-3xl" layout="fill" objectFit="cover" objectPosition="center"/>
+          <div className="relative w-full h-full col-start-1 col-end-5 shadow-xl">
+            <Image
+              alt=""
+              priority
+              src={item.img}
+              className="rounded-3xl"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
           </div>
           <div className="flex flex-col h-full col-start-7 col-end-11 justify-evenly">
             {/* name */}
             <h1 className="text-5xl font-Pacifico text-charleston">
               {item.name}
             </h1>
-            <p className="text-lg text-charleston font-Comfortaa">S/.{selectedSize.prize}</p>
+            <p className="text-lg text-charleston font-Comfortaa">
+              S/.{selectedSize.prize}
+            </p>
             {/* colorSelected */}
             <div>
               <p className="text-base text-charleston font-Comfortaa">
@@ -64,13 +75,17 @@ export default function IndividualProduct({ success, error, item }) {
               {/* size */}
               <div>
                 <ul className="flex flex-row gap-5">
-                  {
-                    item.sizes.map(({ size, stock, prize }) => (
-                      <li key={size} onClick={() => setSelectedSize(selectedSize = { size, stock, prize })} className="text-center border-2 rounded-lg cursor-pointer hover:bg-slate-400 border-charleston w-14 h-7">
-                        {size}
-                      </li>
-                    ))
-                  }
+                  {item.sizes.map(({ size, stock, prize }) => (
+                    <li
+                      key={size}
+                      onClick={() =>
+                        setSelectedSize((selectedSize = { size, stock, prize }))
+                      }
+                      className="text-center border-2 rounded-lg cursor-pointer hover:bg-slate-400 border-charleston w-14 h-7"
+                    >
+                      {size}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -90,10 +105,10 @@ export default function IndividualProduct({ success, error, item }) {
             {/* stock */}
             <div>
               <p className="text-xs font-Comfortaa text-charleston">
-                Stock: {
-                  selectedSize.stock ? `${selectedSize.stock} unidad/es`:
-                  'Sin stock'
-                }
+                Stock:{" "}
+                {selectedSize.stock
+                  ? `${selectedSize.stock} unidad/es`
+                  : "Sin stock"}
               </p>
               {/* selectOptions */}
               <div className="flex flex-col items-center justify-center h-16 shadow-xl cursor-pointer hover:bg-teal rounded-2xl bg-charleston w-80">
@@ -134,38 +149,40 @@ export default function IndividualProduct({ success, error, item }) {
 }
 
 export async function getServerSideProps({ params }) {
-  await connectDb()
-  const { category, productCode } = params
+  await connectDb();
+  const { category, productCode } = params;
 
   try {
-    const res = await Product.findOne({ category: category, productCode: productCode }).lean()
+    const res = await Product.findOne({
+      category: category,
+      productCode: productCode,
+    }).lean();
     if (!res) {
       return {
         props: {
           success: false,
-          error: "Categoría o código de producto inválidos"
-        }
-      }
+          error: "Categoría o código de producto inválidos",
+        },
+      };
     }
-    res._id = `${res._id}`
-    const { sizes } = res
-    sizes.forEach(size => {
-      size._id = `${size._id}`
-      return size
+    res._id = `${res._id}`;
+    const { sizes } = res;
+    sizes.forEach((size) => {
+      size._id = `${size._id}`;
+      return size;
     });
     return {
       props: {
         success: true,
-        item: res
-      }
-    }
-
+        item: res,
+      },
+    };
   } catch (error) {
     return {
       props: {
         success: false,
-        error: "Error del servidor"
-      }
-    }
+        error: "Error del servidor",
+      },
+    };
   }
 }
