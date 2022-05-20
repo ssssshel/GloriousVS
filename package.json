@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "autoprefixer": "^10.4.5",
-    "dependencies": "^0.0.1",
+    "dependencies": "0.0.1",
     "firebase": "9.8.1",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.1",
