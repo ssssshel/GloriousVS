@@ -8,10 +8,9 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 const UserAccess = () => {
-  const firestore = getFirestore(firebaseApp);
-
   let [isReg, setIsReg] = useState(false);
 
   const router = useRouter();
