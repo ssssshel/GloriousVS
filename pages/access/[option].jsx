@@ -28,13 +28,11 @@ const UserAccess = () => {
   }, [option]);
 
   async function registerUser(email, password, role) {
-    const userInfo = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    ).then((firebaseUser) => {
-      return firebaseUser;
-    });
+    const userInfo = await createUserWithEmailAndPassword(auth, email, password)
+      .then((firebaseUser) => {
+        return firebaseUser;
+      })
+      .catch((e) => console.log(e));
 
     const docuRef = doc(firestore, `/users/${userInfo.user.uid}`);
     setDoc(docuRef, { correo: email, rol: role });
