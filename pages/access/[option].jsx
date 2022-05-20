@@ -7,10 +7,10 @@ import firebaseApp from "../../firebase/credentials";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-const auth = getAuth(firebaseApp);
-const firestore = getFirestore(firebaseApp);
-
 const UserAccess = () => {
+  const auth = getAuth(firebaseApp);
+  const firestore = getFirestore(firebaseApp);
+
   let [isReg, setIsReg] = useState(false);
 
   const router = useRouter();
@@ -26,16 +26,18 @@ const UserAccess = () => {
     }
   }, [option]);
 
-  // async function registerUser(email, password, role) {
-  // const userInfo = await createUserWithEmailAndPassword(auth, email, password)
-  // .then((firebaseUser) => {
-  // return firebaseUser;
-  // })
-  // .catch((e) => console.log(e));
+  async function registerUser(email, password, role) {
+    const userInfo = await createUserWithEmailAndPassword(auth, email, password)
+      .then((firebaseUser) => {
+        return firebaseUser;
+      })
+      .catch((e) => console.log(e));
 
-  // const docuRef = doc(firestore, `/users/${userInfo.user.uid}`);
-  // setDoc(docuRef, { correo: email, rol: role });
-  // }
+    const docuRef = doc(firestore, `/users/${userInfo.user.uid}`);
+    await setDoc(docuRef, { correo: email, rol: role })
+      .then((createdUser) => console.log(createdUser))
+      .catch((e) => console.log(e));
+  }
 
   function handleSubmit(e) {
     e.preventDefault();

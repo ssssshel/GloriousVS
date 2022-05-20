@@ -1,7 +1,9 @@
 import HeadLayout from "../../../components/Head";
 import Navbar from "../../../components/Navbar";
 
-export default function AdminPanel({ hasPrivileges, success }) {
+import { useRouter } from "next/router";
+
+export default function AdminPanel({}) {
   const router = useRouter();
 
   return (
@@ -70,7 +72,6 @@ export async function getStaticProps({ params, context }) {
     },
   };
 }
-
 export async function getStaticPaths() {
   return {
     paths: [],

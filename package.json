@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.7.0",
@@ -33,6 +34,7 @@
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "jest": "28.1.0",
+    "jest-environment-jsdom": "28.1.0",
     "postcss": "^8.4.13",
     "tailwindcss": "^3.0.24"
   }
