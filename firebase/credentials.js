@@ -7,13 +7,13 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.APIKEY,
+  // apiKey: process.env.APIKEY,
   authDomain: "glorious-vs.firebaseapp.com",
   projectId: "glorious-vs",
   storageBucket: "glorious-vs.appspot.com",
-  messagingSenderId: process.env.MESSAGINGSENDERID,
-  appId: proccess.env.APPID,
-  measurementId: process.env.MEASUREMENTID
+  // messagingSenderId: process.env.MESSAGINGSENDERID,
+  // appId: proccess.env.APPID,
+  // measurementId: process.env.MEASUREMENTID
 };
 
 // Initialize Firebase
