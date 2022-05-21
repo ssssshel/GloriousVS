@@ -6,9 +6,9 @@ import Navbar from "../../../../../../../components/Navbar";
 import { useRouter } from "next/router";
 
 export default function SpecificProductAdmin({ success, error, item }) {
-  console.log(success);
-  console.log(error);
-  console.log(item);
+  // console.log(success);
+  // console.log(error);
+  // console.log(item);
 
   const router = useRouter();
 

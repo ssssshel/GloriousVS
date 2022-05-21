@@ -3,6 +3,12 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
+import firebaseApp from "../firebase/credentials";
+import {getAuth, signOut} from "firebase/auth"
+const auth = getAuth(firebaseApp)
+
+// import {} from "react-firebase-hooks"
+
 const Navbar = ({ hasPrivileges, clientID }) => {
   const router = useRouter();
 
@@ -81,6 +87,9 @@ const Navbar = ({ hasPrivileges, clientID }) => {
         <Link href="/access/register">
           <a className="hover:font-bold ">Registro</a>
         </Link>
+
+        <a onClick={() => signOut(auth)} className="hover:font-bold ">Cerrar sesión</a>
+
       </ul>
     </header>
   );

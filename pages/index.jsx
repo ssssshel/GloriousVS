@@ -2,9 +2,15 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import HeadLayout from "../components/Head";
 import Navbar from "../components/Navbar";
-// import newUser from "../lib/newUser";
 
-const home = () => {
+import {useAuth} from "../utils/auth"
+
+import {useContext} from "react"
+
+
+const Home = () => {
+  // const user = useContext(useAuth)
+  // console.log(user)
   return (
     <div>
       <HeadLayout section={"Index"} description={"Glorious, tienda virtual"} />
@@ -148,7 +154,7 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
 
 // export async function getServerSideProps(){
 //   await newUser()
