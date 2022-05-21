@@ -3,14 +3,14 @@ import Footer from "../components/Footer";
 import HeadLayout from "../components/Head";
 import Navbar from "../components/Navbar";
 
-import {useAuth} from "../utils/auth"
+import { useAuth } from "../utils/auth"
 
-import {useContext} from "react"
+import { useContext } from "react"
 
 
 const Home = () => {
-  // const user = useContext(useAuth)
-  // console.log(user)
+   const user = useAuth()
+  console.log(`usuario: ${user.uid}`)
   return (
     <div>
       <HeadLayout section={"Index"} description={"Glorious, tienda virtual"} />

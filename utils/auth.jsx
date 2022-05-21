@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react'
+import { useState, useContext, createContext, useEffect } from 'react'
 
 import firebaseApp from '../firebase/credentials';
 
@@ -13,7 +13,7 @@ const sessionContext = createContext()
 
 // EXPERIMENTAR: aparentemente se puede eliminar sin problema, no funciona de momento coo
 // metodo para compartir globalmente el user state
-export function SessionContext({children}){
+export function SessionContext({ children }) {
 	const auth = useProvideAuth()
 	return <sessionContext.Provider value={auth}>{children}</sessionContext.Provider>
 }
@@ -22,7 +22,7 @@ export const useAuth = () => {
 	return useContext(sessionContext)
 }
 
-function useProvideAuth(){
+function useProvideAuth() {
 	const [user, setUser] = useState(null)
 
 	async function getRole(uid) {
@@ -44,14 +44,22 @@ function useProvideAuth(){
 		}).catch((e) => console.log(e))
 	}
 
-	onAuthStateChanged(auth, (firebaseUser) => {
-		if (firebaseUser) {
-
-			if (!user) {
-				setUserWithFirebaseAndRole(firebaseUser)
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+			if (firebaseUser) {
+				if (!user) {
+					setUserWithFirebaseAndRole(firebaseUser)
+				}
+				// setUser(firebaseUser)
+			} else {
+				setUser(null)
 			}
-		} else {
-			setUser(null)
-		}
+		})
+
+		return () => unsubscribe()
 	})
+
+
+	console.log(`user: ${user.email}`)
+	return user
 }

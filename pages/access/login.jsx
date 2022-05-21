@@ -1,6 +1,6 @@
 import HeadLayout from "../../components/Head";
 
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 
 import firebaseApp from "../../firebase/credentials";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -12,12 +12,12 @@ const UserLogin = () => {
 	const auth = getAuth(firebaseApp);
 
 	function handleSubmit(e) {
-    e.preventDefault();
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
+		e.preventDefault();
+		const email = e.target.elements.email.value;
+		const password = e.target.elements.password.value;
 
 		signInWithEmailAndPassword(auth, email, password)
-  }
+	}
 
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-screen bg-white">
