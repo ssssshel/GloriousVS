@@ -5,6 +5,9 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 import firebaseApp from "../firebase/credentials";
 import {getAuth, signOut} from "firebase/auth"
+
+import {useContext} from "react"
+
 const auth = getAuth(firebaseApp)
 
 // import {} from "react-firebase-hooks"

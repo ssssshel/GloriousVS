@@ -10,7 +10,7 @@ import { useContext } from "react"
 
 const Home = () => {
    const user = useAuth()
-  console.log(`usuario: ${user.uid}`)
+  // console.log(`usuario: ${user.uid}`)
   return (
     <div>
       <HeadLayout section={"Index"} description={"Glorious, tienda virtual"} />
