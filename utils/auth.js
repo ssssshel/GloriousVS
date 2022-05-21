@@ -56,10 +56,21 @@ function useProvideAuth() {
 			}
 		})
 
-		return () => unsubscribe()
-	})
+	 	return () => unsubscribe()
+	 }, [])
+
+	// onAuthStateChanged(auth, (firebaseUser) => {
+	// 	if (firebaseUser) {
+	// 		if (!user) {
+	// 			setUserWithFirebaseAndRole(firebaseUser)
+	// 		}
+	// 		// setUser(firebaseUser)
+	// 	} else {
+	// 		setUser(null)
+	// 	}
+	// })
 
 
-	console.log(`user: ${user.email}`)
+	// console.log(`user: ${user.email}`)
 	return user
 }

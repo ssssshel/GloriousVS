@@ -7,7 +7,7 @@ import { useState } from 'react'
 // import firebaseApp from '../firebase/credentials';
 // import { getAuth, onAuthStateChanged } from 'firebase/auth'
 // import { getFirestore, doc, getDoc } from "firebase/firestore"
-import { SessionContext } from "../utils/auth.jsx"
+import { SessionContext } from "../utils/auth.js"
 
 // const auth = getAuth(firebaseApp)
 // const firestore = getFirestore(firebaseApp)
