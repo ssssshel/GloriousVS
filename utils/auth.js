@@ -1,28 +1,35 @@
+// AUTH es un wrapper que exporta un hook de contexto que a su vez representa el objeto 
+// user junto a sus propiedades {uid, email, role}. Esto con el fin de que el contexto de
+// sesión de usuario sea global y por tanto accesible para todos los componentes y secciones
+// de la aplicación web 
+
 import { useState, useContext, createContext, useEffect } from 'react'
 
 import firebaseApp from '../firebase/credentials';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, getDoc } from "firebase/firestore"
+import { useRouter } from "next/router"
 
 const auth = getAuth(firebaseApp)
 const firestore = getFirestore(firebaseApp)
 
 const sessionContext = createContext()
 
-
-// EXPERIMENTAR: aparentemente se puede eliminar sin problema, no funciona de momento coo
-// metodo para compartir globalmente el user state
+// wrapper 
 export function SessionContext({ children }) {
 	const auth = useProvideAuth()
 	return <sessionContext.Provider value={auth}>{children}</sessionContext.Provider>
 }
 
+// context
 export const useAuth = () => {
 	return useContext(sessionContext)
 }
 
+// context functions
 function useProvideAuth() {
+	const router = useRouter()
 	const [user, setUser] = useState(null)
 
 	async function getRole(uid) {
@@ -34,16 +41,30 @@ function useProvideAuth() {
 
 	const setUserWithFirebaseAndRole = (firebaseUser) => {
 		getRole(firebaseUser.uid).then((role) => {
-			const userData = {
-				uid: firebaseUser.uid,
-				email: firebaseUser.email,
-				role: role
+			let userData = {}
+			if (role === "admin" || role === "editor") {
+				userData = {
+					uid: firebaseUser.uid,
+					email: firebaseUser.email,
+					role: role,
+					hasPrivileges: true
+				}
+			}else{
+				userData = {
+					uid: firebaseUser.uid,
+					email: firebaseUser.email,
+					role: role,
+				}
+
 			}
+
 			setUser(userData)
-			console.log(userData)
+			console.log(userData.role)
 		}).catch((e) => console.log(e))
 	}
 
+	// se emplea el hook useEffect con el fin de actualizar el estado user cada vez que
+	// la app  se renderiza
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
 			if (firebaseUser) {
@@ -55,22 +76,25 @@ function useProvideAuth() {
 				setUser(null)
 			}
 		})
+		console.log(`Usuario: ${user}`)
+		return () => unsubscribe()
+	})
 
-	 	return () => unsubscribe()
-	 }, [])
+	// useEffect(() => {
 
-	// onAuthStateChanged(auth, (firebaseUser) => {
-	// 	if (firebaseUser) {
-	// 		if (!user) {
-	// 			setUserWithFirebaseAndRole(firebaseUser)
+	// 	const url = router.pathname
+
+
+	// 	const routeBlocker = () => {
+	// 		if (!user || (user.role != "admin" || user.role != "editor")) {
+	// 			if (url.includes("admin")) {
+
+	// 			}
 	// 		}
-	// 		// setUser(firebaseUser)
-	// 	} else {
-	// 		setUser(null)
 	// 	}
+
+	// 	return () => routeBlocker()
 	// })
 
-
-	// console.log(`user: ${user.email}`)
 	return user
 }

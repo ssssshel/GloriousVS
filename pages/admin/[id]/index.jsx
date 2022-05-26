@@ -1,10 +1,17 @@
 import HeadLayout from "../../../components/Head";
 import Navbar from "../../../components/Navbar";
+import PrivateRoute from "../../../components/alerts/Private";
 
 import { useRouter } from "next/router";
+import { useAuth } from "../../../utils/auth";
 
 export default function AdminPanel({}) {
   const router = useRouter();
+  const user = useAuth()
+
+  if(!user || user.hasPrivileges != true){
+    return <PrivateRoute/>
+  }
 
   return (
     <div>

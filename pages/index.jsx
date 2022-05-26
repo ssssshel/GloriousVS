@@ -9,8 +9,12 @@ import { useContext } from "react"
 
 
 const Home = () => {
-   const user = useAuth()
-  // console.log(`usuario: ${user.uid}`)
+  //  const user = useAuth()
+  //  const {uid, role} = user
+  //  if(user){
+
+  //    console.log(`usuario code: ${uid} | rol: ${role}`)
+  //  }
   return (
     <div>
       <HeadLayout section={"Index"} description={"Glorious, tienda virtual"} />
