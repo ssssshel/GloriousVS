@@ -4,13 +4,18 @@ import Product from "../../../../../../../models/Product";
 import HeadLayout from "../../../../../../../components/Head";
 import Navbar from "../../../../../../../components/Navbar";
 import { useRouter } from "next/router";
+import PrivateRoute from "../../../components/alerts/Private";
+
+import { useAuth } from "../../../utils/auth";
 
 export default function SpecificProductAdmin({ success, error, item }) {
-  // console.log(success);
-  // console.log(error);
-  // console.log(item);
-
   const router = useRouter();
+  const user = useAuth()
+
+	if (!user || user.hasPrivileges != true) {
+		return <PrivateRoute />
+	}
+
 
   const deleteProduct = async (productCode) => {
     try {

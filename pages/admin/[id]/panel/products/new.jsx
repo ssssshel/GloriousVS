@@ -4,8 +4,18 @@ import { nanoid } from "nanoid";
 import HeadLayout from "../../../../../components/Head";
 import Navbar from "../../../../../components/Navbar";
 import FormProduct from "../../../../../components/admin/FormProduct";
+import PrivateRoute from "../../../components/alerts/Private";
+
+import { useAuth } from "../../../utils/auth";
 
 const NewProduct = () => {
+
+  const user = useAuth()
+
+  if (!user || user.hasPrivileges != true) {
+    return <PrivateRoute />
+  }
+
   const id = nanoid(10);
 
   const formNewProduct = {

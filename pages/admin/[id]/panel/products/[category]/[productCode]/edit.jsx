@@ -4,10 +4,14 @@ import { useRouter } from "next/router";
 import HeadLayout from "../../../../../../../components/Head";
 import Navbar from "../../../../../../../components/Navbar";
 import FormProduct from "../../../../../../../components/admin/FormProduct";
+import PrivateRoute from "../../../components/alerts/Private";
+
+import { useAuth } from "../../../utils/auth";
 
 // FUNCTION FETCHER
 const fetcher = async (url) => {
   const res = await fetch(url);
+  
 
   if (!res.ok) {
     const error = new Error(
@@ -25,12 +29,20 @@ const fetcher = async (url) => {
 // COMPONENT
 export default function EditProduct() {
   const router = useRouter();
+
+  const user = useAuth()
+  
   const { productCode } = router.query;
 
   const { data: product, error } = useSWR(
     productCode ? `/api/admin/products/${productCode}` : null,
     fetcher
   );
+
+	if (!user || user.hasPrivileges != true) {
+		return <PrivateRoute />
+	}
+  
 
   if (!product) {
     return <div>Cargando...</div>;

@@ -1,10 +1,18 @@
-import { useRouter } from "next/router";
 
 import HeadLayout from "../../../../../components/Head";
 import Navbar from "../../../../../components/Navbar";
+import PrivateRoute from "../../../components/alerts/Private";
+
+import { useAuth } from "../../../utils/auth";
+import { useRouter } from "next/router";
 
 const ProductsPanel = () => {
   const router = useRouter();
+  const user = useAuth()
+
+  if (!user || user.hasPrivileges != true) {
+    return <PrivateRoute />
+  }
 
   return (
     <div>
@@ -27,7 +35,7 @@ const ProductsPanel = () => {
                 }
                 className="text-ivory "
               >
-               Agregar nuevo producto
+                Agregar nuevo producto
               </p>
             </div>
             <div className="p-3 rounded-lg cursor-pointer hover:bg-green bg-teal">
