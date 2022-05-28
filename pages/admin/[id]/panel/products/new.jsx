@@ -6,7 +6,7 @@ import Navbar from "../../../../../components/Navbar";
 import FormProduct from "../../../../../components/admin/FormProduct";
 import PrivateRoute from "../../../../../components/alerts/Private";
 
-import { useAuth } from "../../../../../utils";
+import { useAuth } from "../../../../../utils/auth";
 
 const NewProduct = () => {
 

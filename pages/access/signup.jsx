@@ -48,67 +48,67 @@ const UserSignup = () => {
 			router.reload
 		}
 	}
-		function handleSubmit(e) {
-			e.preventDefault();
-			const email = e.target.elements.email.value;
-			const password = e.target.elements.password.value;
-			const name = e.target.elements.name.value;
-			const surname = e.target.elements.surname.value;
-			const role = "user";
+	function handleSubmit(e) {
+		e.preventDefault();
+		const email = e.target.elements.email.value;
+		const password = e.target.elements.password.value;
+		const name = e.target.elements.name.value;
+		const surname = e.target.elements.surname.value;
+		const role = "user";
 
-			registerUser(email, password, role, name, surname);
-		}
+		registerUser(email, password, role, name, surname);
+	}
 
-		return (
-			<div className="flex flex-col items-center justify-center w-full h-screen bg-white">
-				<HeadLayout section={"Registro"} />
-				<div>
-					<div className="flex flex-col items-center justify-center gap-5 p-5 rounded-lg shadow-lg w-fit">
-						<form onSubmit={handleSubmit} className="flex flex-col gap-5 w-fit ">
-							<label className="flex gap-3 ">
-								Correo electrónico
-								<input
-									type="email"
-									name="email"
-									id="email"
-									required
-									placeholder="Ingrese su correo"
-								/>
-							</label>
-							<label className="flex gap-3">
-								Contraseña
-								<input
-									type="password"
-									name="password"
-									id="password"
-									minLength={8}
-									maxLength={20}
-									required
-									placeholder="Ingrese su contraseña"
-								/>
-							</label>
-							<label className="flex gap-3">
-								Nombre
-								<input
-									type="text"
-									name="name"
-									id="name"
-									required
-									placeholder="Ingrese su nombre"
-								/>
-							</label>
-							<label className="flex gap-3">
-								Apellido
-								<input
-									type="text"
-									name="surname"
-									id="surname"
-									required
-									placeholder="Ingrese su apellido"
-								/>
-							</label>
+	return (
+		<div className="flex flex-col items-center justify-center w-full h-screen bg-white">
+			<HeadLayout section={"Registro"} />
+			<div>
+				<div className="flex flex-col items-center justify-center gap-5 p-5 rounded-lg shadow-lg w-fit">
+					<form onSubmit={handleSubmit} className="flex flex-col gap-5 w-fit ">
+						<label className="flex gap-3 ">
+							Correo electrónico
+							<input
+								type="email"
+								name="email"
+								id="email"
+								required
+								placeholder="Ingrese su correo"
+							/>
+						</label>
+						<label className="flex gap-3">
+							Contraseña
+							<input
+								type="password"
+								name="password"
+								id="password"
+								minLength={8}
+								maxLength={20}
+								required
+								placeholder="Ingrese su contraseña"
+							/>
+						</label>
+						<label className="flex gap-3">
+							Nombre
+							<input
+								type="text"
+								name="name"
+								id="name"
+								required
+								placeholder="Ingrese su nombre"
+							/>
+						</label>
+						<label className="flex gap-3">
+							Apellido
+							<input
+								type="text"
+								name="surname"
+								id="surname"
+								required
+								placeholder="Ingrese su apellido"
+							/>
+						</label>
 
-							{/* <label className="flex gap-3">
+						{/* <label className="flex gap-3">
 							Rol
 							<select required name="role" id="role">
 								<option value={null}>Elige un rol</option>
@@ -118,20 +118,20 @@ const UserSignup = () => {
 							</select>
 						</label> */}
 
-							<input
-								className="p-2 rounded-md shadow-md cursor-pointer bg-green hover:bg-ivory"
-								type="submit"
-								value="Registrate"
-							/>
-						</form>
-						<button className="hover:font-bold" onClick={() => router.push("/access/login")}>
-							Ya tengo una cuenta
-						</button>
-					</div>
+						<input
+							className="p-2 rounded-md shadow-md cursor-pointer bg-green hover:bg-ivory"
+							type="submit"
+							value="Registrate"
+						/>
+					</form>
+					<button className="hover:font-bold" onClick={() => router.push("/access/login")}>
+						Ya tengo una cuenta
+					</button>
 				</div>
 			</div>
+		</div>
 
-		);
-	}
+	);
+}
 
-	export default UserSignup;
+export default UserSignup;
