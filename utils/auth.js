@@ -42,24 +42,41 @@ function useProvideAuth() {
 	const setUserWithFirebaseAndRole = (firebaseUser) => {
 		getRole(firebaseUser.uid).then((role) => {
 			let userData = {}
-			if (role === "admin" || role === "editor") {
-				userData = {
-					uid: firebaseUser.uid,
-					email: firebaseUser.email,
-					role: role,
-					hasPrivileges: true
-				}
-			}else{
-				userData = {
-					uid: firebaseUser.uid,
-					email: firebaseUser.email,
-					role: role,
-				}
+			switch (role) {
+				case "admin":
+					userData = {
+						uid: firebaseUser.uid,
+						email: firebaseUser.email,
+						role: role,
+						hasPrivileges: true,
+						isAdmin: true,
+					}
+					return setUser(userData)
+
+				case "editor":
+					userData = {
+						uid: firebaseUser.uid,
+						email: firebaseUser.email,
+						role: role,
+						hasPrivileges: true,
+					}
+					return setUser(userData)
+
+				case "user":
+					userData = {
+						uid: firebaseUser.uid,
+						email: firebaseUser.email,
+						role: role,
+					}
+					return setUser(userData)
+
+				default:
+					userData = null
+					return setUser(userData)
 
 			}
 
-			setUser(userData)
-			console.log(userData.role)
+			// console.log(userData.role)
 		}).catch((e) => console.log(e))
 	}
 
@@ -79,22 +96,6 @@ function useProvideAuth() {
 		console.log(`Usuario: ${user}`)
 		return () => unsubscribe()
 	})
-
-	// useEffect(() => {
-
-	// 	const url = router.pathname
-
-
-	// 	const routeBlocker = () => {
-	// 		if (!user || (user.role != "admin" || user.role != "editor")) {
-	// 			if (url.includes("admin")) {
-
-	// 			}
-	// 		}
-	// 	}
-
-	// 	return () => routeBlocker()
-	// })
 
 	return user
 }

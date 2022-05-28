@@ -4,9 +4,9 @@ import Product from "../../../../../../../models/Product";
 import HeadLayout from "../../../../../../../components/Head";
 import Navbar from "../../../../../../../components/Navbar";
 import { useRouter } from "next/router";
-import PrivateRoute from "../../../components/alerts/Private";
+import PrivateRoute from "../../../../../../../components/alerts/Private";
 
-import { useAuth } from "../../../utils/auth";
+import { useAuth } from "../../../../../../../utils/auth";
 
 export default function SpecificProductAdmin({ success, error, item }) {
   const router = useRouter();

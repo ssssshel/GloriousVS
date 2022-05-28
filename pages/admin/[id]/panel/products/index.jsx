@@ -1,9 +1,9 @@
 
 import HeadLayout from "../../../../../components/Head";
 import Navbar from "../../../../../components/Navbar";
-import PrivateRoute from "../../../components/alerts/Private";
+import PrivateRoute from "../../../../../components/alerts/Private";
 
-import { useAuth } from "../../../utils/auth";
+import { useAuth } from "../../../../../utils/auth";
 import { useRouter } from "next/router";
 
 const ProductsPanel = () => {

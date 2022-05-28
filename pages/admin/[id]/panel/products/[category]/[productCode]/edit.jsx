@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import HeadLayout from "../../../../../../../components/Head";
 import Navbar from "../../../../../../../components/Navbar";
 import FormProduct from "../../../../../../../components/admin/FormProduct";
-import PrivateRoute from "../../../components/alerts/Private";
+import PrivateRoute from "../../../../../../../components/alerts/Private";
 
-import { useAuth } from "../../../utils/auth";
+import { useAuth } from "../../../../../../../utils/auth";
 
 // FUNCTION FETCHER
 const fetcher = async (url) => {

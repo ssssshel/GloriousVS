@@ -5,14 +5,14 @@ import Product from "../../../../../../models/Product";
 import HeadLayout from "../../../../../../components/Head";
 import Navbar from "../../../../../../components/Navbar";
 import Link from "next/link";
-import PrivateRoute from "../../../components/alerts/Private";
+import PrivateRoute from "../../../../../../components/alerts/Private";
 
-import { useAuth } from "../../../utils/auth";
+import { useAuth } from "../../../../../../utils/auth";
 
 export default function ProductCategoryAdmin({ success, error, items }) {
 
 	const user = useAuth()
-	
+
 	const router = useRouter()
 	const { category } = router.query;
 

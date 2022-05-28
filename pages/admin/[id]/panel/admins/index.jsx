@@ -1,16 +1,14 @@
 import HeadLayout from "../../../../../components/Head";
 import Navbar from "../../../../../components/Navbar";
-import PrivateRoute from "../../../components/alerts/Private";
 
-import { useAuth } from "../../../utils/auth";
 
 const AdminsPanel = () => {
 
-  const user = useAuth()
+  // const user = useAuth()
 
-	if (!user || user.hasPrivileges != true) {
-		return <PrivateRoute />
-	}
+	// if (!user || user.hasPrivileges != true) {
+	// 	return <PrivateRoute />
+	// }
 
   return (
     <div>

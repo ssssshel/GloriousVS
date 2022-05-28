@@ -5,12 +5,12 @@ import PrivateRoute from "../../../components/alerts/Private";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../utils/auth";
 
-export default function AdminPanel({}) {
+export default function AdminPanel({ }) {
   const router = useRouter();
   const user = useAuth()
 
-  if(!user || user.hasPrivileges != true){
-    return <PrivateRoute/>
+  if (!user || user.hasPrivileges != true) {
+    return <PrivateRoute />
   }
 
   return (
@@ -44,20 +44,30 @@ export default function AdminPanel({}) {
               <p>Usuarios</p>
               <p>{">"} </p>
             </div>
-            <div
-              onClick={() => router.push("/admin/adminId/panel/admins")}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
-            >
-              <p>Administradores</p>
-              <p>{">"} </p>
-            </div>
-            <div
-              onClick={() => router.push("/admin/adminId/panel/editors")}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
-            >
-              <p>Editores</p>
-              <p>{">"} </p>
-            </div>
+            {
+              user.isAdmin ? (
+                <>
+                  <div
+                    onClick={() => router.push("/admin/adminId/panel/admins")}
+                    className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+                  >
+                    <p>Administradores</p>
+                    <p>{">"} </p>
+                  </div>
+                  <div
+                    onClick={() => router.push("/admin/adminId/panel/editors")}
+                    className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+                  >
+                    <p>Editores</p>
+                    <p>{">"} </p>
+                  </div>
+
+                </>
+
+              ) : (
+                <></>
+              )
+            }
             <div
               onClick={() => router.push("/admin/adminId/profile")}
               className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"

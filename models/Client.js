@@ -1,27 +1,16 @@
+import { ObjectId } from "mongodb"
 import mongoose from "mongoose"
 
 const ClientSchema = new mongoose.Schema({
-    clientCode:{
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
     },
-    patSurname: {
-        type: String,
-        required: true
-    },
-    matSurname: {
+    surname: {
         type: String,
         required: true
     },
     email: {
-        type: String,
-        required: true
-    },
-    phone: {
         type: String,
         required: true
     },
@@ -31,33 +20,24 @@ const ClientSchema = new mongoose.Schema({
     role:{
         type: String,
         required: true,
-        default: "client"
     },
     cart: [
         {
             productCode: {
                 type: String,
             },
-            name: {
-                type: String,
+            sizeCode:{
+                type: ObjectId
             },
-            material: {
-                type: String,
+            quantity: {
+                type: Number
             },
-            season: {
-                type: String,
+            individualPrice:{
+                type: Number
             },
-            code: {
-                type: String,
-            },
-            sizes: [
-                {
-                    name: String,
-                    stock: Number,
-                    prize: String,
-                    color: String
-                }
-            ]
+            totalPrize: {
+                type: Number
+            }
         }
     ]
 })

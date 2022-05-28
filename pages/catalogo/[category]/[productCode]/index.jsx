@@ -23,6 +23,8 @@ export default function IndividualProduct({ success, error, item }) {
     size: item.sizes[0].size,
     stock: item.sizes[0].stock,
     prize: item.sizes[0].prize,
+
+    sizeID: item.sizes[0]._id
   });
 
   if (!success) {
@@ -72,14 +74,18 @@ export default function IndividualProduct({ success, error, item }) {
               <p className="text-base text-charleston font-Comfortaa">
                 Talla: {selectedSize.size}
               </p>
+
+              <p className="text-base text-charleston font-Comfortaa">
+                SizeID: {selectedSize._id }
+              </p>
               {/* size */}
               <div>
                 <ul className="flex flex-row gap-5">
-                  {item.sizes.map(({ size, stock, prize }) => (
+                  {item.sizes.map(({ size, stock, prize, _id }) => (
                     <li
                       key={size}
                       onClick={() =>
-                        setSelectedSize((selectedSize = { size, stock, prize }))
+                        setSelectedSize((selectedSize = { size, stock, prize, _id }))
                       }
                       className="text-center border-2 rounded-lg cursor-pointer hover:bg-slate-400 border-charleston w-14 h-7"
                     >

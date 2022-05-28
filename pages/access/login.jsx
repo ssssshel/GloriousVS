@@ -16,7 +16,7 @@ const UserLogin = () => {
 		const email = e.target.elements.email.value;
 		const password = e.target.elements.password.value;
 
-		signInWithEmailAndPassword(auth, email, password)
+		signInWithEmailAndPassword(auth, email, password).then(() => { window.alert("Sesión iniciada con éxito"); router.push('/') }).catch((error) =>{ window.alert(`Correo o contraseña inconrrectos`); router.reload()})
 	}
 
 	return (
