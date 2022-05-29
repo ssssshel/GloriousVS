@@ -13,6 +13,7 @@ import { useAuth } from "../utils/auth";
 const Navbar = () => {
   const router = useRouter()
   const userData = useAuth()
+  // console.log(`userdata: ${userData.userId}`)
 
   const signOutEffect = () => {
     signOut(auth)
@@ -35,7 +36,7 @@ const Navbar = () => {
           <Link href="/catalogo">
             <a className="hover:font-bold ">Productos</a>
           </Link>
-          <Link href={`/client/clienid`}>
+          <Link href={`/client/${userData.userId}`}>
             <a className="hover:font-bold ">Mi cuenta</a>
           </Link>
           <Link href={`/client/clientid/cart`}>

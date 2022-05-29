@@ -2,6 +2,10 @@ import { ObjectId } from "mongodb"
 import mongoose from "mongoose"
 
 const ClientSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -13,6 +17,9 @@ const ClientSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    document:{
+        type: String
     },
     address: {
         type: String,

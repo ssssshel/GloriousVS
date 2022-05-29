@@ -53,7 +53,7 @@ const UserLogin = () => {
 						/>
 					</form>
 					<button className="hover:font-bold" onClick={() => router.push('/access/signup')}>
-						Quiero regitrarme
+						Quiero registrarme
 					</button>
 				</div>
 			</div>

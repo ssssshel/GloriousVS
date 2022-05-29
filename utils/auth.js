@@ -35,17 +35,21 @@ function useProvideAuth() {
 	async function getRole(uid) {
 		const docuRef = doc(firestore, `/users/${uid}`)
 		const encodedDoc = await getDoc(docuRef)
-		const finalData = encodedDoc.data().rol
+		const role = encodedDoc.get('rol')
+		const userId = encodedDoc.get('userId')
+
+		const finalData = {role, userId}
 		return finalData
 	}
 
 	const setUserWithFirebaseAndRole = (firebaseUser) => {
-		getRole(firebaseUser.uid).then((role) => {
+		getRole(firebaseUser.uid).then(({role, userId}) => {
 			let userData = {}
 			switch (role) {
 				case "admin":
 					userData = {
 						uid: firebaseUser.uid,
+						userId: userId,
 						email: firebaseUser.email,
 						role: role,
 						hasPrivileges: true,
@@ -56,6 +60,7 @@ function useProvideAuth() {
 				case "editor":
 					userData = {
 						uid: firebaseUser.uid,
+						userId: userId,
 						email: firebaseUser.email,
 						role: role,
 						hasPrivileges: true,
@@ -65,6 +70,7 @@ function useProvideAuth() {
 				case "user":
 					userData = {
 						uid: firebaseUser.uid,
+						userId: userId,
 						email: firebaseUser.email,
 						role: role,
 					}
@@ -93,7 +99,7 @@ function useProvideAuth() {
 				setUser(null)
 			}
 		})
-		console.log(`Usuario: ${user}`)
+		// console.log(`Usuario: ${user}`)
 		return () => unsubscribe()
 	})
 

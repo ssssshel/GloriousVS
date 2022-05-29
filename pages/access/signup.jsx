@@ -6,6 +6,8 @@ import firebaseApp from "../../firebase/credentials";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
+import { nanoid } from "nanoid";
+
 
 const UserSignup = () => {
 
@@ -14,7 +16,7 @@ const UserSignup = () => {
 	const auth = getAuth(firebaseApp);
 	const firestore = getFirestore(firebaseApp);
 
-	async function registerUser(email, password, role, name, surname) {
+	async function registerUser(email, password, role, name, surname, userId) {
 
 		// REGISTRO DE USUARIO EN FIREBASE AUTH
 		const userInfo = await createUserWithEmailAndPassword(auth, email, password)
@@ -25,7 +27,7 @@ const UserSignup = () => {
 
 		// REGISTRO DE USUARIO EN FIRESTORE (EMAIL + ROLE)
 		const docuRef = doc(firestore, `/users/${userInfo.user.uid}`);
-		await setDoc(docuRef, { correo: email, rol: role })
+		await setDoc(docuRef, { correo: email, rol: role, userId: userId })
 			.then((createdUser) => console.log(createdUser))
 			.catch((e) => { window.alert(e); router.reload() });
 
@@ -35,7 +37,7 @@ const UserSignup = () => {
 				method: "POST", headers: {
 					"Content-type": "application/json",
 				},
-				body: JSON.stringify({ name: name, surname: surname, email: email, address: "Agregar dirección", role: role, cart: [] })
+				body: JSON.stringify({userId: userId, name: name, surname: surname, email: email, address: "Agregar dirección", role: role, cart: [] })
 
 			})
 			const createdUser = await fetchUser.json()
@@ -55,8 +57,9 @@ const UserSignup = () => {
 		const name = e.target.elements.name.value;
 		const surname = e.target.elements.surname.value;
 		const role = "user";
+		const userId = nanoid(12)
 
-		registerUser(email, password, role, name, surname);
+		registerUser(email, password, role, name, surname, userId);
 	}
 
 	return (
