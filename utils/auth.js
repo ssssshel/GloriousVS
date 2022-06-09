@@ -27,11 +27,15 @@ export const useAuth = () => {
 	return useContext(sessionContext)
 }
 
+
 // context functions
 function useProvideAuth() {
 	const router = useRouter()
 	const [user, setUser] = useState(null)
 
+	// getRole busca el rol asignado a un usuario en firestore para posteriormente
+	// devolver su rol y uid que seran utilizados dentro del objeto userData para 
+	// compartirse globalmente
 	async function getRole(uid) {
 		const docuRef = doc(firestore, `/users/${uid}`)
 		const encodedDoc = await getDoc(docuRef)
@@ -87,7 +91,7 @@ function useProvideAuth() {
 	}
 
 	// se emplea el hook useEffect con el fin de actualizar el estado user cada vez que
-	// la app  se renderiza
+	// la app  se renderiza o existe un cambio en el estado
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
 			if (firebaseUser) {

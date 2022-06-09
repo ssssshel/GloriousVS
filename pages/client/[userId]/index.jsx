@@ -18,19 +18,24 @@ import { useAuth } from "../../../utils/auth";
 
 export default function ClientProfile({success, error, userData}){
   const router = useRouter()
-
+  const user = useAuth()
+  
   // TESTEAR STATE
   let [userOption, setUserOption] = useState(1);
   console.log(userOption);
-  
+   
   if(error){
     return <ErrorScreen error={error}/>
   }
-
+  
   if (!success) {
     return <LoadingScreen />;
   }
-
+  
+  if (!user || user.role != "user" ) {
+    return <PrivateRoute />
+  }
+  
   return (
     <div>
       <HeadLayout section={`userName`} />
@@ -88,10 +93,10 @@ export default function ClientProfile({success, error, userData}){
 
 export async function getStaticProps({params}){
   await connectDb()
-  const {id} = params
+  const {userId} = params
   
   try {
-    const userData =  await Client.findOne({userId: id}).lean()
+    const userData =  await Client.findOne({userId: userId}).lean()
     if(!userData){
       return{
         props:{

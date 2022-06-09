@@ -18,9 +18,9 @@ const ClientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    document:{
-        type: String
-    },
+    // document:{
+    //     type: String
+    // },
     address: {
         type: String,
     },

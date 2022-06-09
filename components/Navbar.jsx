@@ -5,6 +5,7 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 
 import firebaseApp from "../firebase/credentials";
 import {getAuth, signOut} from "firebase/auth"
+
 const auth = getAuth(firebaseApp)
 
 import { useAuth } from "../utils/auth";
@@ -13,14 +14,13 @@ import { useAuth } from "../utils/auth";
 const Navbar = () => {
   const router = useRouter()
   const userData = useAuth()
-  // console.log(`userdata: ${userData.userId}`)
+  // console.log(`userdata: ${userData.userId }`)
 
   const signOutEffect = () => {
     signOut(auth)
-    router.reload()
+    router.push('/')
   }
 
-  
     /* AUTHENTICATED USER */
   
   if ( userData && userData.role === "user" ) {
@@ -44,7 +44,7 @@ const Navbar = () => {
               <FontAwesomeIcon className="text-charleston className='hover:font-bold'" icon={faBagShopping} />
             </a>
           </Link>
-          <a onClick={() => signOutEffect()} className="hover:font-bold cursor-pointer ">Cerrar sesión</a>
+          <a onClick={() => signOutEffect()} className="cursor-pointer hover:font-bold ">Cerrar sesión</a>
 
         </ul>
       </header>
@@ -65,15 +65,13 @@ const Navbar = () => {
           <Link href="/">
             <a className="hover:font-bold ">Panel de administración</a>
           </Link>
-          <a onClick={() => signOutEffect()} className="hover:font-bold  cursor-pointer ">Cerrar sesión</a>
+          <a onClick={() => signOutEffect()} className="cursor-pointer hover:font-bold ">Cerrar sesión</a>
 
         </ul>
       </header>
     )}
   
     /* NAVBAR VISITOR */
-  
-    
 
       return (
         <header className="fixed top-0 z-10 flex flex-row items-center justify-between w-full h-20 px-10 backdrop-blur-lg navbar bg-ivory/80 ">

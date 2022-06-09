@@ -3,7 +3,6 @@ import { useState } from "react";
 import AlertAdmin from "../alerts/AlertAdmin";
 
 const FormProduct = ({ formData, formNewProduct = true }) => {
-  let modalState = 0;
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -78,7 +77,7 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
       });
 
       const post = await req.json();
-      console.log(post);
+      // console.log(post);
 
       if (post.success) {
         window.alert("Producto agregado con éxito");

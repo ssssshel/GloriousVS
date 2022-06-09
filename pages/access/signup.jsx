@@ -37,7 +37,7 @@ const UserSignup = () => {
 				method: "POST", headers: {
 					"Content-type": "application/json",
 				},
-				body: JSON.stringify({userId: userId, name: name, surname: surname, email: email, address: "Agregar dirección", role: role, cart: [] })
+				body: JSON.stringify({userId: userId, name: name, surname: surname, email: email, address: "", role: role, cart: [] })
 
 			})
 			const createdUser = await fetchUser.json()
