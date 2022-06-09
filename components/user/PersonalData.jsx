@@ -24,7 +24,6 @@ const PersonalData = ({ name, surname, email }) => {
 
   const putData = async (form) => {
     const { userId } = router.query;
-    console.log(userId)
     try {
       const req = await fetch(`/api/users/${userId}`, {
         method: "PUT",
@@ -36,11 +35,11 @@ const PersonalData = ({ name, surname, email }) => {
       const data = await req.json();
       if (data.success) {
         window.alert("Tus datos personales han sido cambiados exitosamente");
-        router.reload;
+        router.reload();
       }
     } catch (error) {
-      console.log(error);
-      console.log(form);
+      window.alert(error);
+      router.reload()
     }
   };
 

@@ -78,7 +78,7 @@ export default function ClientProfile({success, error, userData}){
             ): userOption == 2 ? (
               <UserPassword />
             ): userOption == 3 ? (
-              <Address />
+              <Address address={userData.address}/>
             ):(
               <div>null</div>
             )
