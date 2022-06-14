@@ -6,5 +6,5 @@ export default function handleUpdatePassword(newPassword){
     const auth = getAuth(firebaseApp)    
     const user = auth.currentUser
 
-    updatePassword(user, newPassword).then(()=> window.alert('Se actualizó la ccontraseña')).catch((error) => window.alert(error))
+    updatePassword(user, newPassword).then(()=> window.alert('Se actualizó la contraseña')).catch((error) => window.alert(error))
 }
