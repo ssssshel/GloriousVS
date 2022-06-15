@@ -5,7 +5,7 @@
 
 import { useState, useContext, createContext, useEffect } from 'react'
 
-import { firebaseApp } from '../firebase/credentials';
+import firebaseApp from '../firebase/credentials';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, getDoc } from "firebase/firestore"
