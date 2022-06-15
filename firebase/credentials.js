@@ -1,28 +1,26 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+import { initializeApp, getApps, getApp } from "firebase/app";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// const APIKEY = process.env.APIKEY
-// const MESSAGINGSENDERID = process.env.MESSAGINGSENDERID
-// const APPID = proccess.env.APPID
-// const MEASUREMENTID = process.env.MEASUREMENTID
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDFXLGR3faylWjEvRgSQ8elIHubEsnO4k4",
-  authDomain: "glorious-vs.firebaseapp.com",
-  projectId: "glorious-vs",
-  storageBucket: "glorious-vs.appspot.com",
-  messagingSenderId: "947463447717",
-  appId: "1:947463447717:web:928ff4284452d20c17194c",
-  measurementId: "G-S1B38DEEQ9"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId
 };
 
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
+let firebaseApp
 
-export default firebaseApp
+if (!getApps.length) {
+  firebaseApp = initializeApp(firebaseConfig);
+}
+export { firebaseApp }
 // const analytics = getAnalytics(app);

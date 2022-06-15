@@ -5,7 +5,7 @@
 
 import { useState, useContext, createContext, useEffect } from 'react'
 
-import firebaseApp from '../firebase/credentials';
+import { firebaseApp } from '../firebase/credentials';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { getFirestore, doc, getDoc } from "firebase/firestore"
@@ -42,12 +42,12 @@ function useProvideAuth() {
 		const role = encodedDoc.get('rol')
 		const userId = encodedDoc.get('userId')
 
-		const finalData = {role, userId}
+		const finalData = { role, userId }
 		return finalData
 	}
 
 	const setUserWithFirebaseAndRole = (firebaseUser) => {
-		getRole(firebaseUser.uid).then(({role, userId}) => {
+		getRole(firebaseUser.uid).then(({ role, userId }) => {
 			let userData = {}
 			switch (role) {
 				case "admin":
