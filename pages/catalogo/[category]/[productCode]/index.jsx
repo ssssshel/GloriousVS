@@ -10,6 +10,7 @@ import HeadLayout from "../../../../components/Head";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import LoadingScreen from "../../../../components/alerts/Loading";
+import ProductOptions from "../../../../components/products/Options";
 
 export default function IndividualProduct({ success, error, item }) {
   const router = useRouter();
@@ -18,13 +19,17 @@ export default function IndividualProduct({ success, error, item }) {
   let cat = "";
   cat = category.substring(0, 1).toUpperCase() + category.substring(1);
 
+  function showPopUp() {
+    document.getElementById("popup").style.display = "grid";
+  }
+
   // HOOK DE ESTADO DE TALLA SELECCIONADA
   let [selectedSize, setSelectedSize] = useState({
     size: item.sizes[0].size,
     stock: item.sizes[0].stock,
     prize: item.sizes[0].prize,
 
-    sizeID: item.sizes[0]._id
+    sizeID: item.sizes[0]._id,
   });
 
   if (!success) {
@@ -43,7 +48,7 @@ export default function IndividualProduct({ success, error, item }) {
               alt=""
               priority
               src={item.img}
-              className="rounded-3xl"
+              className="rounded-xl"
               layout="fill"
               objectFit="cover"
               objectPosition="center"
@@ -76,7 +81,7 @@ export default function IndividualProduct({ success, error, item }) {
               </p>
 
               <p className="text-base text-charleston font-Comfortaa">
-                SizeID: {selectedSize._id }
+                SizeID: {selectedSize._id}
               </p>
               {/* size */}
               <div>
@@ -85,7 +90,9 @@ export default function IndividualProduct({ success, error, item }) {
                     <li
                       key={size}
                       onClick={() =>
-                        setSelectedSize((selectedSize = { size, stock, prize, _id }))
+                        setSelectedSize(
+                          (selectedSize = { size, stock, prize, _id })
+                        )
                       }
                       className="text-center border-2 rounded-lg cursor-pointer hover:bg-slate-400 border-charleston w-14 h-7"
                     >
@@ -117,11 +124,20 @@ export default function IndividualProduct({ success, error, item }) {
                   : "Sin stock"}
               </p>
               {/* selectOptions */}
-              <div className="flex flex-col items-center justify-center h-16 shadow-xl cursor-pointer hover:bg-teal rounded-2xl bg-charleston w-80">
-                <p className="text-lg font-Comfortaa text-ivory">
-                  Elige tus opciones
-                </p>
-              </div>
+              {selectedSize.stock <= 0 ? (
+                <p>PRODUCTO SIN STOCK</p>
+              ) : (
+                <button
+                  onClick={() => showPopUp()}
+                  className="flex flex-col items-center justify-center h-16 shadow-xl cursor-pointer hover:bg-teal rounded-lg bg-charleston w-80"
+                >
+                  <p className="text-lg font-Comfortaa text-ivory">
+                    Elige tus opciones
+                  </p>
+                </button>
+              )}
+
+              <ProductOptions item={item} selectedProduct={selectedSize} />
             </div>
           </div>
         </section>

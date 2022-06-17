@@ -8,7 +8,8 @@ import { initializeApp, getApps } from "firebase/app";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: process.env.apiKey,
+  // apiKey: process.env.apiKey,
+  apiKey: "AIzaSyAaeNVlhLmnQS9SeIOTb2rQUQxrQwXjkW0",
   authDomain: process.env.authDomain,
   projectId: process.env.projectId,
   storageBucket: process.env.storageBucket,
@@ -16,6 +17,7 @@ const firebaseConfig = {
   appId: process.env.appId,
   measurementId: process.env.measurementId
 };
+
 
 let firebaseApp
 

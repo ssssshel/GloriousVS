@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="sticky z-20 flex items-center justify-center w-full h-screen px-10 bg-charleston">
+    <footer className="sticky z-30 flex items-center justify-center w-full h-screen px-10 bg-charleston">
       <div className="flex flex-row justify-around w-full">
         <h2 className="text-6xl font-Pacifico text-ivory">Glorious</h2>
         {/* col1 */}
@@ -74,7 +74,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className="absolute bottom-0 flex flex-row items-center justify-end w-full h-16 px-10 bg-teal">
+      <div className="absolute bottom-0 flex flex-row items-center justify-end w-full h-16 px-10 bg-cornsilk ">
         <div className="flex flex-row gap-8 text-3xl">
           <FontAwesomeIcon className="hover:text-cornsilk" icon={faFacebook} />
           <FontAwesomeIcon className="hover:text-cornsilk" icon={faInstagram} />
