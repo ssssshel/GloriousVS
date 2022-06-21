@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
-  // const [cartInput, setCartInput] = useState({ cart: [] });
-
   const [apiPermission, setApiPermission] = useState(false);
 
   const [productQuantity, setProductQuantity] = useState(1);
