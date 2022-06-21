@@ -8,17 +8,36 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
 
   const [product, setProduct] = useState({
     productCode: "",
-    sizeID: "",
+    name: "",
+    color: "",
+    img: "",
+    unitPrice: 0,
+    sizeId: "",
+    sizeName: "",
     quantity: 0,
   });
 
   useEffect(() => {
     setProduct({
       productCode: item.productCode,
-      sizeID: selectedProduct._id,
+      name: item.name,
+      color: item.color,
+      img: item.img,
+      unitPrice: selectedProduct.prize,
+      sizeId: selectedProduct._id,
+      sizeName: selectedProduct.size,
       quantity: productQuantity,
     });
-  }, [item.productCode, selectedProduct._id, productQuantity]);
+  }, [
+    item.productCode,
+    item.name,
+    item.color,
+    item.img,
+    selectedProduct.prize,
+    selectedProduct._id,
+    selectedProduct.size,
+    productQuantity,
+  ]);
 
   useEffect(() => {
     if (apiPermission) {
@@ -31,7 +50,7 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
 
   // actualiza estado del sizeid
   function handleSizeId() {
-    setProduct({ ...product, sizeID: selectedProduct._id });
+    setProduct({ ...product, sizeId: selectedProduct._id });
   }
 
   // actualiza estado de cantidad

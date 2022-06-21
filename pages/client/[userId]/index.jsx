@@ -40,7 +40,7 @@ export default function ClientProfile({ success, error, userData }) {
       <HeadLayout section={`userName`} />
       <Navbar />
       <div className="flex flex-col w-full h-screen px-40 py-20 gap-11 bg-ivory">
-        <div className="flex flex-col justify-center w-full h-20 px-6 shadow-xl rounded-2xl bg-green">
+        <div className="flex flex-col justify-center w-full h-20 px-6 shadow-xl rounded-xl bg-green">
           <p className="text-3xl font-Pacifico text-charleston">
             Hola {userData.name}
           </p>
@@ -49,28 +49,28 @@ export default function ClientProfile({ success, error, userData }) {
           <div className="flex flex-col col-start-1 col-end-5 gap-5">
             <div
               onClick={() => setUserOption((userOption = 1))}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-xl bg-teal"
             >
               <p>Datos personales</p>
               <p>{">"} </p>
             </div>
             <div
               onClick={() => setUserOption((userOption = 2))}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-xl bg-teal"
             >
               <p>Cambiar contraseña</p>
               <p>{">"} </p>
             </div>
             <div
-              onClick={() => router.push("/client/userId/history")}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+              onClick={() => router.push(`/client/${userData.userId}/history`)}
+              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-xl bg-teal"
             >
               <p>Mis compras</p>
               <p>{">"} </p>
             </div>
             <div
               onClick={() => setUserOption((userOption = 3))}
-              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-2xl bg-teal"
+              className="flex flex-row items-center justify-between w-full h-20 px-6 text-2xl shadow-xl cursor-pointer hover:bg-cornsilk font-Pacifico text-charleston rounded-xl bg-teal"
             >
               <p>Direcciones de envío</p>
               <p>{">"} </p>

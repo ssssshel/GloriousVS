@@ -33,19 +33,28 @@ const ClientSchema = new mongoose.Schema({
             productCode: {
                 type: String,
             },
-            sizeID: {
+            name: {
+                type: String,
+            },
+            color: {
+                type: String,
+            },
+            img: {
+                type: String,
+            },
+            unitPrice: {
+                type: Number,
+            },
+            sizeId: {
+                type: String
+            },
+            sizeName: {
                 type: String
             },
             quantity: {
                 type: Number
             },
             _id: false
-            // individualPrice:{
-            //     type: Number
-            // },
-            // totalPrize: {
-            //     type: Number
-            // }
         }
     ]
 })

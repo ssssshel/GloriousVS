@@ -38,7 +38,7 @@ const Navbar = () => {
           <Link href={`/client/${userData.userId}`}>
             <a className="hover:font-bold ">Mi cuenta</a>
           </Link>
-          <Link href={`/client/clientid/cart`}>
+          <Link href={`/client/${userData.userId}/cart`}>
             <a>
               <FontAwesomeIcon
                 className="text-charleston className='hover:font-bold'"
@@ -56,8 +56,7 @@ const Navbar = () => {
       </header>
     );
   } else if (userData && userData.role != "user") {
-
-  /* AUTHENTICATED ADMIN */
+    /* AUTHENTICATED ADMIN */
     return (
       <header className="fixed top-0 z-10 flex flex-row items-center justify-between w-full h-20 px-10 backdrop-blur-lg navbar bg-ivory/80 ">
         <Link href="/">
