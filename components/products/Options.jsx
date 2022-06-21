@@ -2,20 +2,25 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
-  const [cartInput, setCartInput] = useState({ cart: [] });
+  // const [cartInput, setCartInput] = useState({ cart: [] });
 
   const [apiPermission, setApiPermission] = useState(false);
 
   const [productQuantity, setProductQuantity] = useState(1);
 
   const [product, setProduct] = useState({
+    productCode: "",
     sizeID: "",
     quantity: 0,
   });
 
   useEffect(() => {
-    setProduct({ sizeID: selectedProduct._id, quantity: productQuantity });
-  }, [selectedProduct._id, productQuantity]);
+    setProduct({
+      productCode: item.productCode,
+      sizeID: selectedProduct._id,
+      quantity: productQuantity,
+    });
+  }, [item.productCode, selectedProduct._id, productQuantity]);
 
   useEffect(() => {
     if (apiPermission) {
@@ -25,7 +30,6 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
 
   console.log(product);
   console.log(selectedProduct._id);
-  console.log(cartInput.cart);
 
   // actualiza estado del sizeid
   function handleSizeId() {
@@ -51,7 +55,7 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
 
   async function addProductToCart() {
     if (userData) {
-      setCartInput({ cart: [product] });
+      // setCartInput({ cart: [product] });
       setApiPermission(true);
     } else {
       window.alert("Para agregar productos al carrito debe iniciar sesión");
@@ -73,7 +77,6 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
         window.alert("Tu producto ha sido agregado al carrito");
         hidePopup();
         setApiPermission(false);
-        setCartInput({ cart: [] });
       }
     } catch (error) {
       window.alert(error);
