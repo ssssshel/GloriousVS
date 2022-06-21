@@ -87,7 +87,7 @@ function useProvideAuth() {
 			}
 
 			// console.log(userData.role)
-		}).catch((e) => console.log(e))
+		}).catch((e) => { })
 	}
 
 	// se emplea el hook useEffect con el fin de actualizar el estado user cada vez que

@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import AlertAdmin from "../alerts/AlertAdmin";
 
 const FormProduct = ({ formData, formNewProduct = true }) => {
   const router = useRouter();
@@ -60,7 +59,7 @@ const FormProduct = ({ formData, formNewProduct = true }) => {
     e.preventDefault();
     if (!formNewProduct) {
       putData(form);
-    }else{
+    } else {
       postData(form);
     }
   };

@@ -24,7 +24,7 @@ const ClientSchema = new mongoose.Schema({
     address: {
         type: String,
     },
-    role:{
+    role: {
         type: String,
         required: true,
     },
@@ -33,18 +33,19 @@ const ClientSchema = new mongoose.Schema({
             productCode: {
                 type: String,
             },
-            sizeCode:{
-                type: ObjectId
+            sizeID: {
+                type: String
             },
             quantity: {
                 type: Number
             },
-            individualPrice:{
-                type: Number
-            },
-            totalPrize: {
-                type: Number
-            }
+            _id: false
+            // individualPrice:{
+            //     type: Number
+            // },
+            // totalPrize: {
+            //     type: Number
+            // }
         }
     ]
 })

@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connectDb } from "../../../../lib/connectDb";
 import Product from "../../../../models/Product";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { getAuth } from "firebase/auth";
 
 import HeadLayout from "../../../../components/Head";
 import Navbar from "../../../../components/Navbar";
@@ -12,16 +13,18 @@ import Footer from "../../../../components/Footer";
 import LoadingScreen from "../../../../components/alerts/Loading";
 import ProductOptions from "../../../../components/products/Options";
 
+import firebaseApp from "../../../../firebase/credentials";
+import { useAuth } from "../../../../utils/auth";
+
+// const auth = getAuth(firebaseApp);
+
 export default function IndividualProduct({ success, error, item }) {
   const router = useRouter();
   const { category } = router.query;
+  const userData = useAuth();
 
   let cat = "";
   cat = category.substring(0, 1).toUpperCase() + category.substring(1);
-
-  function showPopUp() {
-    document.getElementById("popup").style.display = "grid";
-  }
 
   // HOOK DE ESTADO DE TALLA SELECCIONADA
   let [selectedSize, setSelectedSize] = useState({
@@ -29,8 +32,12 @@ export default function IndividualProduct({ success, error, item }) {
     stock: item.sizes[0].stock,
     prize: item.sizes[0].prize,
 
-    sizeID: item.sizes[0]._id,
+    _id: item.sizes[0]._id,
   });
+
+  function showPopUp() {
+    document.getElementById("popup").style.display = "grid";
+  }
 
   if (!success) {
     return <LoadingScreen />;
@@ -137,7 +144,12 @@ export default function IndividualProduct({ success, error, item }) {
                 </button>
               )}
 
-              <ProductOptions item={item} selectedProduct={selectedSize} />
+              <ProductOptions
+                item={item}
+                selectedProduct={selectedSize}
+                userData={userData}
+                userId={userData ? userData.userId : ""}
+              />
             </div>
           </div>
         </section>

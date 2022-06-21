@@ -11,7 +11,6 @@ import { useAuth } from "../../../../../../../utils/auth";
 // FUNCTION FETCHER
 const fetcher = async (url) => {
   const res = await fetch(url);
-  
 
   if (!res.ok) {
     const error = new Error(
@@ -30,8 +29,8 @@ const fetcher = async (url) => {
 export default function EditProduct() {
   const router = useRouter();
 
-  const user = useAuth()
-  
+  const user = useAuth();
+
   const { productCode } = router.query;
 
   const { data: product, error } = useSWR(
@@ -39,10 +38,9 @@ export default function EditProduct() {
     fetcher
   );
 
-	if (!user || user.hasPrivileges != true) {
-		return <PrivateRoute />
-	}
-  
+  if (!user || user.hasPrivileges != true) {
+    return <PrivateRoute />;
+  }
 
   if (!product) {
     return <div>Cargando...</div>;

@@ -1,25 +1,89 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const ProductOptions = ({ item, selectedProduct }) => {
+const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
+  const [cartInput, setCartInput] = useState({ cart: [] });
+
+  const [apiPermission, setApiPermission] = useState(false);
+
   const [productQuantity, setProductQuantity] = useState(1);
 
-  const handleQuantity = (e) => {
-    setProductQuantity(e.target.value);
-  };
+  const [product, setProduct] = useState({
+    sizeID: "",
+    quantity: 0,
+  });
 
-  const calcSubtotal = () => {
+  useEffect(() => {
+    setProduct({ sizeID: selectedProduct._id, quantity: productQuantity });
+  }, [selectedProduct._id, productQuantity]);
+
+  useEffect(() => {
+    if (apiPermission) {
+      pubData(product);
+    }
+  }, [apiPermission]);
+
+  console.log(product);
+  console.log(selectedProduct._id);
+  console.log(cartInput.cart);
+
+  // actualiza estado del sizeid
+  function handleSizeId() {
+    setProduct({ ...product, sizeID: selectedProduct._id });
+  }
+
+  // actualiza estado de cantidad
+  function handleQuantity(e) {
+    setProductQuantity(e.target.value);
+    setProduct({ ...product, quantity: e.target.value });
+  }
+
+  // actualiza estado del precio
+  function calcTotal() {
     return productQuantity * selectedProduct.prize;
-  };
+  }
 
   function hidePopup() {
     document.getElementById("popup").style.display = "none";
     setProductQuantity(1);
+    setProduct({ ...product, quantity: 1 });
+  }
+
+  async function addProductToCart() {
+    if (userData) {
+      setCartInput({ cart: [product] });
+      setApiPermission(true);
+    } else {
+      window.alert("Para agregar productos al carrito debe iniciar sesión");
+    }
+  }
+
+  async function pubData(cartInput) {
+    const uid = userId;
+    try {
+      const req = await fetch(`/api/users/${uid}/cart`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(cartInput),
+      });
+      const data = await req.json();
+      if (data.success) {
+        window.alert("Tu producto ha sido agregado al carrito");
+        hidePopup();
+        setApiPermission(false);
+        setCartInput({ cart: [] });
+      }
+    } catch (error) {
+      window.alert(error);
+    }
   }
 
   return (
     <div
       id="popup"
+      // onMouseEnter={handleSizeId}
       className="w-screen h-screen z-50 fixed top-0 left-0 hidden grid-cols-4 grid-rows-4 bg-black/50"
     >
       <div className="col-start-2 col-span-2 flex flex-col gap-6 p-12 justify-center w-full h-full row-start-2 bg-ivory rounded-lg row-span-2">
@@ -47,7 +111,7 @@ const ProductOptions = ({ item, selectedProduct }) => {
           </div>
           <div>
             <p>Precio unitario: S/.{selectedProduct.prize}</p>
-            <p>Precio total: S/.{calcSubtotal()}</p>
+            <p>Precio total: S/.{calcTotal()}</p>
             {selectedProduct.stock <= 0 ? (
               <div></div>
             ) : (
@@ -74,6 +138,7 @@ const ProductOptions = ({ item, selectedProduct }) => {
             <button
               id="btCart"
               className=" bg-charleston text-ivory w-fit p-3 rounded-lg hover:bg-teal"
+              onClick={() => addProductToCart()}
             >
               Agregar al carrito
             </button>
