@@ -45,13 +45,8 @@ const ProductOptions = ({ item, selectedProduct, userData, userId }) => {
     }
   }, [apiPermission]);
 
-  console.log(product);
-  console.log(selectedProduct._id);
-
-  // actualiza estado del sizeid
-  function handleSizeId() {
-    setProduct({ ...product, sizeId: selectedProduct._id });
-  }
+  // console.log(product);
+  // console.log(selectedProduct._id);
 
   // actualiza estado de cantidad
   function handleQuantity(e) {

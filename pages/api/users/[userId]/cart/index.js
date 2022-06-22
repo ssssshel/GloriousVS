@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'PUT':
       try {
-        const userEdited = await Client.findOneAndUpdate({ userId: userId }, { $push: { cart: [req.body] } }, { new: true, runValidators: true })
+        const userEdited = await Client.findOneAndUpdate({ userId: userId }, { $addToSet: { cart: [req.body] } }, { new: true, runValidators: true })
         if (!userEdited) {
           return res.status(404).json({ success: false, error: "Client ID o contenido del body inválido" })
         }
